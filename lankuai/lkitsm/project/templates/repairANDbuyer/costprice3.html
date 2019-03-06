@@ -1,0 +1,209 @@
+<!--部门经理 主页点进来-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #aaa {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        #btn {
+            float: right;
+        }
+    </style>
+
+    <script>
+        function _submits() {
+            var1 = $("#cnt1").html();
+            $("#cnt4").val(var1);
+            var1 = $("#cnt2").html();
+            $("#cnt5").val(var1);
+        }
+    </script>
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/jquery/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+<!--  -->
+<br>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>申请人姓名:{{ paf.pname }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>申请人部门:{{ paf.pdemp }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>申请时间:{{ paf.pdate }}</h4>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <h3>申请采购：</h3>
+    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+           data-pagination="true" data-side-pagination="client" data-page-size="5">
+        <thead class="bg-default">
+        <tr>
+            <th>商品名称</th>
+            <th>商品数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td> {{ goods.gname }} </td>
+            <td> {{ goods.gamount }} </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+
+<!-- 显示采购提交的成本价 -->
+<!-- 需要显示， -->
+<div class="container">
+    <h3>填写成本价</h3>
+    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+           data-pagination="true" data-side-pagination="client" data-page-size="5">
+        <thead class="bg-default">
+        <tr>
+            <th>商品名称</th>
+            <th>商品数量</th>
+            <th>商品成本单价</th>
+            <th>单个商品建议售价</th>
+            <th>单个商品利润</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td> {{ goods.gname }} </td>
+            <td> {{ goods.gamount }} </td>
+            <td> {{ gc.gcgprice }} </td>
+            <td> {{ gc.suggestprice }} </td>
+            <td> {{ gc.goodsprofit }} </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>申请时间:{{ gc.gcdate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>备注:{{ gc.pcomment }}</h4>
+    </div>
+</div>
+
+<hr>
+
+<!--显示部门经理的同意，和可能的改价 -->
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>售价:{{ mc.affirmprice }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>备注:{{ mc.pcomment }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>同意时间:{{ mc.mcdate }}</h4>
+    </div>
+</div>
+<hr>
+
+<!-- 发起人确认收货时间 -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <form class="needs-validation" novalidate="" action="addconsignee" method="post">
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="cgdate">收货时间</label>
+                        <input type="text" name="cgdate" class="form-control" id="cgdate" placeholder=""
+                               readonly="readonly"
+                               value={{ cgdate }}>
+                        <small class="text-muted"></small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3" style="display: none">
+                    <label for="purchaseID">采购ID:</label>
+                    <input type="text" name="purchaseID" class="form-control" id="purchaseID" placeholder=""
+                           value={{ paf.purchaseID }} required="" readonly="readonly">
+                </div>
+                <br>
+
+
+                <div class="row">
+                    <div class="mb-3">
+                        <label class="control-label" for="pcomment">备注:</label>
+                        <textarea type="" class="form-control" id="pcomment" name="pcomment"> </textarea>
+                        <small class="text-muted"></small>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" name="pizhun" class="btn btn-primary btn-lg" value="pizhun" id="btn">确认收货</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 部门经理根据以上信息，是否同意购买      addmanageryes-->
+<!--
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <form class="needs-validation" novalidate="" action="addmanageryes" method="post">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="affirmprice">是否修改售价</label>
+                        <input type="text" name="affirmprice" class="form-control" id="affirmprice" placeholder=""
+                               value={{ gc.suggestprice }}>
+                        <small class="text-muted"></small>
+                    </div>
+                    <div class="col-md-4 mb-3" style="display: none">
+                        <label for="purchaseID">故障ID:</label>
+                        <input type="text" name="purchaseID" class="form-control" id="purchaseID" placeholder=""
+                               value={{ paf.purchaseID }} required="" readonly="readonly">
+                    </div>
+                    <br>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3">
+                        <label class="control-label" for="pcomment">备注:</label>
+                        <textarea type="" class="form-control" id="pcomment" name="pcomment"> </textarea>
+                        <small class="text-muted"></small>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" name="pizhun" class="btn btn-primary btn-lg" value="pizhun" id="btn">提交</button>
+            </form>
+        </div>
+    </div>
+</div>
+-->
+
+</body>
+</html>

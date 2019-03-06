@@ -1,0 +1,121 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}base{% endblock %}</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .messages {
+            background: yellow;
+            /*Your code */
+        }
+
+        .messages .success {
+            background: green;
+            /*Your code, e.g. background: green */
+        }
+
+        .messages .error {
+            background: black;
+            /*Your code, e.g. background: black */
+        }
+
+        .messages .warning {
+            background: red;
+            /*Your code, e.g. background: red */
+        }
+    </style>
+    <script type="text/javascript" src="../static/jquery/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    {% block linkscript %}
+
+    {% endblock linkscript %}
+
+</head>
+<body>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+<div class="container-fluid">
+    <div class="row visible-on">
+        <div class="hidden-xs col-md-2 column">
+            <img alt="140x140" src="../static/img/loginlogo.png"/>
+        </div>
+
+        <div class="col-md-8 column">
+            <span class="visible-xs">
+                <h3 class="text-center">
+                    <p class="text-primary bg-primary">蓝色快线信息管理系统移动版</p>
+                </h3>
+            </span>
+            <span class="hidden-xs">
+                <h2 class="text-center">
+                    <p class="text-primary">蓝色快线信息管理系统</p>
+                </h2>
+            </span>
+        </div>
+        <div class="hidden-xs col-md-2 column">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {{ username }}<b class="caret"></b>
+                </a>
+                <!--<img style="height: 160px;" src="../static/img/{{photo_list}}"/>-->
+                <ul class="dropdown-menu">
+                    <li><a href="/logout">注销系统</a></li>
+                    <li><a href="#">个人信息</a></li>
+                </ul>
+            </li>
+        </div>
+    </div>
+</div>
+
+{% block navigationbar %}
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <h5 class="text-center bg-primary">
+
+						<span class="hidden-xs">
+							<p class="bg-primary">
+								&nbsp;
+							</p>
+						</span>
+            <span class="hidden-xs">
+							<p class="bg-primary">
+							-----蓝色快线信息管理系统版权归深圳市蓝色快线信息技术服务有限公司所有-----
+							</p>
+						</span>
+
+            <p class="hidden-xs">
+                地址：坂田街道云里智能园区&nbsp;电话：17620437003
+            </p>
+            <p class="hidden-xs">
+                &nbsp;
+            </p>
+            <p class="bg-primary">
+            </p>
+        </h5>
+    </div>
+</div>
+
+
+</body>
+</html>

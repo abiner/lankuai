@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-laydate.css"/>
+    <script src="../static/jquery/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <label for="picture">文件:</label>
+    <span id="file_warp">
+        <input type="file" name="file1" id="file1" style="z-index: 1"/>
+    </span>
+</div>
+
+
+<input type="button" id="add" name="add" value="追加" onclick="add()"/>
+
+
+<script>
+    function add() {
+        alert("w dainji le ");
+        var addHtml = '<br/><br/><input type="file" name="file" id="file" style="z-index: 1"/><br/><br/>';
+        $("#file_warp").append(addHtml);
+    }
+</script>
+
+
+</body>
+</html>

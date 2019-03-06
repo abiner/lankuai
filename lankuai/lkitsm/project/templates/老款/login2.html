@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/skin_/login.css" />
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.select.js"></script>
+    <title>蓝色快线数字办公平台</title>
+</head>
+<body>
+	<div id="container">
+        <div id="bd">
+            <div id="main">
+                <div class="login">
+                    <div id="logo"></div>
+                    <h1></h1>
+				    <form action="" method="post"  enctype="multipart/form-data">
+				        <div class="form"><!--登录表单-->
+				            {% csrf_token %}
+				            {{uf.as_p}}
+				        </div>
+				        <div id="btn" class="loginButton">
+				            <div>
+				                <a href="#">忘记密码?</a>
+				                <button type ='submit' class="button">登录</button>
+				            </div>
+				        </div>
+				    </form>
+				</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #aaa {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>我的合同</h1>
+
+<table class="table table-hover" style="table-layout: fixed;">
+    <thead>
+    <tr>
+        <th>合同编号</th>
+        <th>项目名称</th>
+        <th>签约名称</th>
+        <th>签约主体</th>
+        <th>开票单位</th>
+        <th>执行日期</th>
+        <th>开始日期</th>
+        <th>结束日期</th>
+        <th>合同总额</th>
+        <th>月均费用</th>
+        <th>约定付款时间</th>
+        <th>结费方式</th>
+        <th>客户负责人</th>
+        <th>项目地址</th>
+        <th>项目跟进人</th>
+        <th>服务类型</th>
+        <th>服务方式</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    {% for sel in myconList %}
+        <tr onclick="window.document.location = '/business/{{ sel.pactNo }}'">
+            <td>{{ sel.pactNo }}</td>
+            <td>{{ sel.projectname }}</td>
+            <td>{{ sel.signedname }}</td>
+            <td id='aaa' title='{{ sel.signedsubject }}' style='width: 50px; text-align: left;'>{{ sel.signedsubject }}</td>
+            <td id='aaa' title='{{ sel.billingunit }}' style='width: 50px; text-align: left;'>{{ sel.billingunit }}</td>
+            <td>{{ sel.executedate }}</td>
+            <td>{{ sel.begindate }}</td>
+            <td>{{ sel.overdate }}</td>
+            <td>{{ sel.pacttotalsum }}</td>
+            <td>{{ sel.monthlyfee }}</td>
+            <td>{{ sel.Agreedpaymenttime }}</td>
+            <td>{{ sel.knotrate }}</td>
+            <td>{{ sel.accountmanager }}</td>
+            <td>{{ sel.projectaddress }}</td>
+            <td>{{ sel.followuppeople }}</td>
+            <td id='aaa' title='{{ sel.servertype }}' style='width: 50px; text-align: left;'>{{ sel.servertype }}</td>
+            <td>{{ sel.servicemode }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<a href="/business/" class="btn btn-info">新建流程</a>
+<div class="row clearfix">
+    <div class="col-md-12 column text-center">
+        <ul class="pagination">
+            {% for index in myconList.paginator.page_range %}
+                <li>
+                    <a href="/business/mycontract/{{ index }}">{{ index }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

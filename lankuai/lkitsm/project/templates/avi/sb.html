@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://v4.bootcss.com/docs/4.0/examples/checkout/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/index/img/lk.ico">
+    <title>人力管理</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/hrms/bootstrap.min.css" rel="stylesheet"><!--一个点表示同同级目录，两个点表示上级目录-->
+
+    <!-- Custom styles for this template -->
+    <link href="../static/hrms/form-validation.css" rel="stylesheet">
+    <!--时间控件样式-->
+    <link rel="stylesheet" href="../static/css/bootstrap-laydate.css">
+    <script src="../static/js/bootstrap-laydate.js"></script>
+
+</head>
+
+
+<body class="bg-light">
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8 order-md-1">
+
+
+            <form method="post" action="/form/" enctype="multipart/form-data" class="needs-validation">
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="id_uploader">Uploader:</label>
+                        <input type="text" name="uploader" required id="id_uploader">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="id_uppath">Uppath:</label>
+                        <input type="file" name="uppath" required id="id_uppath">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="id_describe">Describe:</label>
+                        <input type="text" name="describe" required id="id_describe">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="test1">Uploaddate:</label>
+                        <input type="text" name="uploaddate" class="form-control" id="test1" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+
+                        <label for="id_kind">Kind:</label>
+                        <input type="text" name="kind" required id="id_kind">
+                    </div>
+
+
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<a href="http://127.0.0.1:8000/media/">返回蓝快课堂</a>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../static/hrms/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../static/hrms/jquery-slim.min.js"><\/script>')</script>
+<script src="../static/hrms/popper.min.js"></script>
+<script src="../static/hrms/bootstrap.min.js"></script>
+<script src="../static/hrms/holder.min.js"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test1' //指定元素
+    });
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test2' //指定元素
+    });
+</script>
+
+
+</body>
+</html>

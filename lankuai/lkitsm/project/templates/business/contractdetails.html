@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>哈喽，大家好</h1>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>合同编号:{{ business.pactNo }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>项目名称:{{ business.projectname }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4 id="liushuihao">签约名称:{{ business.signedname }}</h4>
+    </div>
+</div>
+<br>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>签约主体:{{ business.signedsubject }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>开票单位:{{ business.billingunit }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>执行日期:{{ business.executedate }}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>开始日期:{{ business.begindate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>结束日期:{{ business.overdate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>合同总额:{{ business.monthlyfee }}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>月均费用:{{ business.Agreedpaymenttime }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>约定付款时间:{{ business.knotrate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>结费方式:{{ business.accountmanager }}</h4>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>客户负责人:{{ business.projectaddress }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>项目地址:{{ business.followuppeople }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>项目跟进人:{{ business.servertype }}</h4>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>服务类型:{{ business.servicemode }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>服务方式:{{ business.wbegin }}</h4>
+    </div>
+    <hr>
+    <br>
+</div>
+{% for item in filess %}
+    <span id="span">附件:{{ item.pactNo }}</span>
+
+    <button id="qiehuan" type="button">切换</button>
+    <div id="iframe" style="display: none">
+        <iframe src="media/{{ item.file }}"
+                width='1000px' height='1500px' frameborder='0' scrolling>This is an embedded
+            <a target='_blank' href='http://office.com'>
+                Microsoft Office
+            </a> document, powered by
+            <a target='_blank' href='http://office.com/webapps'>
+                Office Online
+            </a>
+        </iframe>
+    </div>
+
+{% endfor %}
+
+<script>
+    window.onload = function () {
+        var qiehuan = document.getElementById('qiehuan');
+        var iframe = document.getElementById('iframe');
+        qiehuan.onclick = function () {
+            if (iframe.style.display == 'none') { // == 判断div.display是否为显示
+                iframe.style.display = 'block'; //= 赋值也可了解成改变
+            }
+            else {
+                iframe.style.display = 'none';
+            }
+
+        }
+    };
+</script>
+
+</body>
+</html>

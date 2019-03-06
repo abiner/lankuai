@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/index/img/lk.ico">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 class="text-center">
+				{{ notice.headline }}
+			</h3>
+
+            <pre>{{ notice.article }}</pre>
+
+            <img alt="250x250" src="media/{{ notice.picture }}" />
+		</div>
+	</div>
+</div>
+
+<form class="needs-validation" novalidate="" action="addyes" method="post" enctype="multipart/form-data" style="display: {{ display }}">
+    <input style="display: none" type="text" name="moticeid" class="form-control" id="moticeid" placeholder="" value={{ notice.moticeid }}
+           required="">
+
+
+    <div class="container">
+        <div class="row clearfix">
+<!--
+            <div class="col-md-2 column">
+                <button type="submit" class="btn btn-default btn-success">需要修改</button>
+            </div>
+-->
+            <div class="col-md-6 column">
+            </div>
+            <div class="col-md-2 column">
+
+            </div>
+            <div class="col-md-2 column">
+
+                <button type="submit" class="btn btn-default btn-success">同意发布</button>
+
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

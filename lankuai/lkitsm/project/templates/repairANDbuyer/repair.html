@@ -1,0 +1,245 @@
+<!--商务合同-->
+
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://v4.bootcss.com/docs/4.0/examples/checkout/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/index/img/lk.ico">
+    <title>{{ title }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/hrms/bootstrap.min.css" rel="stylesheet"><!--一个点表示同同级目录，两个点表示上级目录-->
+
+    <!-- Custom styles for this template -->
+    <link href="../static/hrms/form-validation.css" rel="stylesheet">
+    <!--时间控件样式-->
+    <link rel="stylesheet" href="../static/css/bootstrap-laydate.css">
+    <script src="../static/js/bootstrap-laydate.js"></script>
+    <script src="../static/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/hrms/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../static/hrms/jquery-slim.min.js"><\/script>')</script>
+    <script src="../static/hrms/popper.min.js"></script>
+    <script src="../static/hrms/bootstrap.min.js"></script>
+    <script src="../static/hrms/holder.min.js"></script>
+
+
+</head>
+
+<body class="bg-light">
+
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="../static/hrms/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>维修申请表单</h2>
+        <p class="lead">-----LK-repair-apply for-----</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <form class="card p-2">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Promo code">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                    </div>
+                </div>
+            </form>
+            <span class="text-muted">&nbsp;</span>
+
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <a href="/repairANDbuyer/repair"><h6 class="my-0">新增维修单</h6></a>
+                        <small class="text-muted">Add repairApplyFor</small>
+                    </div>
+                    <span class="text-muted"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <a href="#"><h6 class="my-0">全部维修记录</h6></a>
+                        <small class="text-muted">(通常来说个人是不能查看别人的维修记录的，只能查看自己申请的维修记录表，所有这个再说)General repairApplyFor</small>
+                    </div>
+                    <span class="text-muted"></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <a href="myrepair/1"><h6 class="my-0">我的维修申请</h6></a>
+                        <small class="text-muted">My repairApplyFor</small>
+                    </div>
+                    <span class="text-muted"></span>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">维修申请</h4>
+            <form class="needs-validation" novalidate="" action="addrepair" method="post" enctype="multipart/form-data">
+
+
+                <!--1-->
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="firstName">姓名</label>
+                        <input type="text" name="fname" class="form-control" id="firstName" placeholder=""
+                               value={{ username }}
+                                       required="">
+                        <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="country">所属部门</label>
+                        <select name="inunits" class="custom-select d-block w-100" id="country" required="">
+                            {% for item in depList %}
+                                <option>{{ item.depname }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="country">联系号码</label>
+                        <input type="text" name="phone" class="form-control" id="firstName" placeholder="" value=""
+                               required="">
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--2 faultclass,trademark,unittype,equipmentID,faultdescribe,subtime,eventlevel             brandtype-->
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <label for="country">故障分类</label>
+                        <select name="faultclass" class="custom-select d-block w-100" id="country" required="">
+                            {% for item in ftList %}
+                                <option>{{ item.wapplytype }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+                        <label for="country">设备名称及型号</label>
+                        <input type="text" name="brandtype" class="form-control" id="firstName" placeholder="" value=""
+                               required="">
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="country">设备序列号</label>
+                        <input type="text" name="equipmentID" class="form-control" id="firstName" placeholder=""
+                               value=""
+                               required="">
+                        <div class="invalid-feedback">
+                            Please select a valid country.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="control-label" for="Eventdescribe">故障描述</label>
+                    <textarea type="" class="form-control" id="faultdescribe" name="faultdescribe"> </textarea>
+                    <small class="text-muted">请详细描述故障现象</small>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">蓝色快线信息技术服务有限公司</p>
+
+
+    </footer>
+</div>
+
+<script>
+    <!-- 追加文件 -->
+    function addd() {
+        var addHtml = '<input type="file" name="addfile" id="file" style="z-index: 1"/>';
+        $("#file_warp").append(addHtml);
+    }
+</script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test1' //指定元素
+    });
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test2' //指定元素
+    });
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test3' //指定元素
+    });
+</script>
+
+
+</body>
+</html>

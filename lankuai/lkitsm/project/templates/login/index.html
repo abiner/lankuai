@@ -1,0 +1,419 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}主页面{% endblock %}
+{% block linkscript %}
+    <style>
+        #aaa {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+{% endblock %}
+
+{% block navigationbar %}
+    <div class="row clearfix">
+        <div class="col-xs-12 col-md-12 column hidden-xs"><!--hidden-xs移动端手机端不显示-->
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#example-navbar-collapse">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">蓝色快线</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/index">首页</a></li>
+                            <li><a href="/writeWorkList">运维系统</a></li>
+                            <li><a href="/business/">商务管理</a></li>
+                            <li><a href="#">资产管理</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 绩效管理 <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="test">服务记录</a></li>
+                                    <li><a href="#">考试记录</a></li>
+                                    <li><a href="#">考勤记录</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">分离的链接</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">另一个分离的链接</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    人事管理
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/register/">入职信息</a></li>
+                                    <li><a href="/{{ myrole }}/">工作流程</a></li>
+                                    <li><a href="#">职位变更</a></li>
+                                    <li><a href="#"></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/notice">公告管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 数据中心 <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">项目运维数据</a></li>
+                                    <li><a href="#">公司运维数据</a></li>
+                                    <li><a href="#">个人明细数据</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">分离的链接</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">另一个分离的链接</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">维修采购<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/repairANDbuyer/repair">维修</a></li>
+                                    <li><a href="repairANDbuyer/buyer">采购</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 蓝快课堂<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/media/1">学习视频</a></li>
+                                    <li><a href="media/upload">上传视频</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>      <!-- 导航 -->
+{% endblock %}
+{% block content %}
+    <!-----------------------手机端底部导航--------------------------	-->
+    <div class="row visible-on">
+        <div class="col-xs-12 column visible-xs">
+            <nav class="nav navbar-default navbar-fixed-bottom" role="navigation">
+                <!--navbar-fixed-bottom固定到底部--   2、 navbar-fixed-top为顶部    3、 navbar- static-top为顶部>
+                <!--navbar-default默认样式   inverse导航样式-->
+                <!--navbar-fixed-bottom固定到底部-->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+
+                    <li><a href="#support"><span class="glyphicon glyphicon-user"></span> HR</a></li>
+                    <li><a href="#support"><span class="glyphicon glyphicon-send"></span> ITSM</a></li>
+                    <li><a href="media"><span class="glyphicon glyphicon-film"></span> 媒体</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-----------------------手机端底部导航--------------------------	-->
+    <div class="row clearfix">
+    <div class="col-xs-12 col-md-4 column">
+        <div class="panel panel-default"><!--样式：default/success/primary/info/warning/danger-->
+            <div class="panel-heading">
+                <h3 class="panel-title">商务待办</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <thead class="bg-info">
+                    <!--class="bg-info"加底色-->
+                    <tr>
+                        <th>
+                            编号
+                        </th>
+                        <th>
+                            产品
+                        </th>
+                        <th>
+                            交付时间
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Default
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer text-right"><a href="#">更多</a></div>
+        </div>
+
+        <div class="panel panel-default"><!--样式：default/success/primary/info/warning/danger-->
+            <div class="panel-heading">
+                <h3 class="panel-title">生日提醒</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-condensed">
+                    <thead class="bg-info">
+                    <!--class="bg-info"加底色              inttimecha -->
+                    <tr>
+                        <th>姓名</th>
+                        <th>职位</th>
+                        <th>生日</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in uList %}
+                    <tr>
+                        <td>{{ item.uname }}</td>
+                        <td>{{ item.role }}</td>
+                        <td>{{ item.ubirthday }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer text-right"><a href="#">更多</a></div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-md-4 column">
+        <!-- 我的申请 -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">我的申请</h3>
+            </div>
+            <div class="panel-body">
+                <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                       data-pagination="true" data-side-pagination="client" data-page-size="5">
+                    <thead class="bg-default">
+
+                    <tr>
+                        <th> 申请人</th>
+                        <th> 申请类型</th>
+                        <th> 事由</th>
+                        <th>审批详情</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    {% for item in lookOverList %}
+                        <tr onclick="window.document.location = '/hrworkfolw/myfolw/{{ item.wid }}/'">
+                            <td> {{ item.wname }} </td>
+                            <td> {{ item.wapplytype }} </td>
+                            <td id='aaa' title='{{ item.wreasons }}'
+                                style='width: 50px; text-align: left;'> {{ item.wreasons }} </td>
+                            <td>{{ details }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer text-right"><a href="#">更多</a></div>
+        </div>
+
+        <!-- 别人的申请 -->
+        <div class="panel panel-default">
+            <div class="panel-heading" style="display: {{ what }}">
+                <h3 class="panel-title">别人的申请</h3>
+            </div>
+            <div class="panel-body" style="display: {{ what }}">
+                <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                       data-pagination="true" data-side-pagination="client" data-page-size="5">
+                    <thead class="bg-default">
+
+                    <tr>
+                        <th> 申请人</th>
+                        <th> 申请类型</th>
+                        <th> 事由</th>
+                        <th>审批详情</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    {% for item in approvalPending %}
+                        <tr onclick="window.document.location ='{{ item.wid }}'">
+                            <td id='aaa' title='{{ item.wid }}'
+                                style='width: 50px; text-align: left;'> {{ item.wname }} </td>
+                            <td> {{ item.wapplytype }} </td>
+                            <td id='aaa' title='{{ item.wreasons }}'
+                                style='width: 50px; text-align: left;'> {{ item.wreasons }} </td>
+                            <td>{{ details }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="panel-footer text-right"><a href="#">更多</a></div>
+            </div>
+        </div>
+
+        <!-- 维修申请 -->
+        <div class="panel panel-default">
+            <div class="panel-heading" style="display: {{ what }}">
+                <h3 class="panel-title">维修申请</h3>
+            </div>
+            <div class="panel-body" style="display: {{ what }}">
+                <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                       data-pagination="true" data-side-pagination="client" data-page-size="5">
+                    <thead class="bg-default">
+
+                    <tr>
+                        <th> 申请人</th>
+                        <th> 故障分类</th>
+                        <th> 设备名称型号</th>
+                        <th>故障描述</th>
+                        <th>申请时间</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    {% for item in e2List %}
+                        <tr onclick="window.document.location ='repairANDbuyer/{{ item.faultID }}{{ role }}'">
+                            <td> {{ item.fname }} </td>
+                            <td> {{ item.faultclass }} </td>
+                            <td id='aaa' title='{{ item.brandtype }}'
+                                style='width: 50px; text-align: left;'> {{ item.brandtype }} </td>
+                            <td id='aaa' title='{{ item.faultdescribe }}'
+                                style='width: 50px; text-align: left;'>{{ item.faultdescribe }}</td>
+                            <td>{{ item.subtime }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="panel-footer text-right"><a href="#">更多</a></div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <!-- 采购申请 -->
+            <div class="panel-heading">
+                <h3 class="panel-title">采购申请</h3>
+            </div>
+            <div class="panel-body">
+                <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                       data-pagination="true" data-side-pagination="client" data-page-size="5">
+                    <thead class="bg-default">
+
+                    <tr>
+                        <th>采购ID</th>
+                        <th>申请人部门</th>
+                        <th>申请人姓名</th>
+                        <th>申请时间</th>
+                        <th>备注</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    {% for item in pafList %}
+                        <tr onclick="window.document.location ='repairANDbuyer/{{ item.purchaseID }}{{ role }}'">
+                            <td> {{ item.purchaseID }} </td>
+                            <td> {{ item.pdemp }} </td>
+                            <td> {{ item.pname }} </td>
+                            <td id='aaa' title='{{ item.pdate }}'
+                                style='width: 50px; text-align: left;'>{{ item.pdate }}</td>
+                            <td id='aaa' title='{{ item.pcomment }}'
+                                style='width: 50px; text-align: left;'>{{ item.pcomment }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="panel-footer text-right"><a href="#">更多</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!--  这是第三列数据展示  -->
+    <div class="col-xs-12 col-md-4 column">
+
+        <div class="panel panel-default">
+            <!-- 第三列，第一行，展示 -->
+            <div class="panel-heading">
+                <h3 class="panel-title">通知&公告</h3>
+            </div>
+            <div class="panel-body">
+                <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                       data-pagination="true" data-side-pagination="client" data-page-size="5">
+                    <thead class="bg-default">
+
+                    <tr>
+                        <th> 序号</th>
+                        <th> 标题</th>
+                        <th> 时间</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    {% for item in noticeList %}
+                        <tr onclick="window.document.location = '/{{ item.moticeid }}'">
+                            <td> {{ item.id }} </td>
+                            <td id='aaa' title='{{ item.headline }}'
+                                style='width: 50px; text-align: left;'> {{ item.headline }} </td>
+                            <td> {{ item.issuetime }} </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer text-right"><a href="#">更多</a></div>
+        </div>
+
+
+        <div class="panel panel-default" style="display: {{ display }}">
+            <!-- 第三列，第二行，展示 -->
+            <div class="panel-heading">
+                <h3 class="panel-title">审批~通知&公告</h3>
+            </div>
+            <div class="panel-body">
+                <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                       data-pagination="true" data-side-pagination="client" data-page-size="5">
+                    <thead class="bg-default">
+
+                    <tr>
+                        <th> 序号</th>
+                        <th> 标题</th>
+                        <th> 时间</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+                    {% for item in role3noticeList %}
+                        <tr onclick="window.document.location = '/{{ item.moticeid }}'">
+                            <td> {{ item.id }} </td>
+                            <td id='aaa' title='{{ item.headline }}'
+                                style='width: 50px; text-align: left;'> {{ item.headline }} </td>
+                            <td> {{ item.issuetime }} </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer text-right"><a href="#">更多</a></div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
