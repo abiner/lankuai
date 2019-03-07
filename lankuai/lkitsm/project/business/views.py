@@ -14,7 +14,7 @@ def busines(request):
     dname = Departments.objects.get(manager=username)
 
 
-    return render(request, 'business.html' ,{"title":"商务合同" ,"username":username})
+    return render(request, 'business/business.html', {"title": "商务合同" , "username":username})
 
 
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect
