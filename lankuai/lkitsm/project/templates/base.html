@@ -61,23 +61,29 @@
                 </h3>
             </span>
             <span class="hidden-xs">
-                <h2 class="text-center">
+                <h1 class="text-center">
                     <p class="text-primary">蓝色快线信息管理系统</p>
-                </h2>
+                </h1>
             </span>
         </div>
-        <div class="hidden-xs col-md-2 column">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    {{ username }}<b class="caret"></b>
-                </a>
-                <!--<img style="height: 160px;" src="../static/img/{{photo_list}}"/>-->
-                <ul class="dropdown-menu">
-                    <li><a href="/logout">注销系统</a></li>
-                    <li><a href="#">个人信息</a></li>
-                </ul>
-            </li>
+        <div class=" col-md-offset-0 column" style="margin:20px 0px 0px 0px">
+
+            <div class="btn-group">
+  <a class="btn dropdown-toggle btn " data-toggle="dropdown" href="#">
+    {{ username }}<i class="fa fa-user"></i>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+
+       <li ><a href="#" class="dropdown-item">个人信息</a></li>
+      <li><a href="/logout" class="dropdown-item">注销系统</a></li>
+
+    <!-- dropdown menu links -->
+  </ul>
+</div>
         </div>
+
+
     </div>
 </div>
 
