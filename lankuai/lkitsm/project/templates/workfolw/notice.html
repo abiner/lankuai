@@ -1,111 +1,103 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)https://v4.bootcss.com/docs/4.0/examples/checkout/ -->
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../static/index/img/lk.ico">
-    <title>{{ title }}</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../static/hrms/bootstrap.min.css" rel="stylesheet"><!--一个点表示同同级目录，两个点表示上级目录-->
-
-    <!-- Custom styles for this template -->
-
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/jquery/jquery.min.js"></script>
-    <script src="/static/js/bootstrap-laydate.js"></script>
 
 
-</head>
 
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
+{% extends 'base.html' %}
 
-            <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0"><a href="/workfolw/notice">新建公告</a></h6>
-                        <small class="text-muted">New process</small>
-                    </div>
-                    <span class="text-muted"></span>
+{% block title %}通知&公告{% endblock %}
+
+{% block linkscript %}
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/index">首页</a>
                 </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0"><a href="/mynotice/1">我发布的公告</a></h6>
-                        <small class="text-muted">My process</small>
-                    </div>
-                    <span class="text-muted"></span>
+                <li class="active">
+                    发布通知&公告
                 </li>
-
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0"><a href="/alnotice/1">所有公告</a></h6><!--#allWorkOrder-->
-                        <small class="text-muted">All work orders</small>
-                    </div>
-                    <span class="text-muted"></span>
-                </li>
-
             </ul>
-
-        </div>
-
-        <div class="col-md-8 order-md-1">
-            <hr class="mb-3">
-            <form class="needs-validation" novalidate="" action="addnotice" method="post" enctype="multipart/form-data" >
-                <h2 class="subfild">
-                    <span>公告</span>
-                </h2>
-
-                <label><span class="impInfo">*</span>文章标题</label>
-
-                <input type="text" name="headline"/>
-
-                <span class="kv-item-tip">标题字数限制在35个字符</span>
-
-                <br>
-
-                <label for="Smallfault">所在栏目</label>
-                <select class="custom-select d-block w-100" id="nclassify" name="nclassify">
-                    <option>A类文章</option>
-                    <option>B类文章</option>
-                    <option>C类文章</option>
-                </select>
-
-                <br>
-
-
-                <div class="col-md-4 mb-3">
-                    <label for="picture">*上传图片</label>
-                    <input class="form-control" type="file" name="picture" required id="picture">
-                </div>
-
-
-
-                <br>
-
-                <label><span class="impInfo">*</span>文章内容</label>
-                <div class="kv-item-content">
-                    <textarea id="article" name="article" style="width:800px;height:240px;"></textarea>
-                </div>
-
-                <br>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
-            </form>
         </div>
     </div>
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">蓝色快线信息技术服务有限公司</p>
-    </footer>
-</div>
-</body>
-<script type="text/javascript">
-    $('select').select();
-    showRemind('input[type=text],textarea', 'color5');
-    UM.getEditor('content');
-</script>
-</html>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-8 column">
+                <div class="row clearfix">
+                    <div class="col-md-2 column">
+                    </div>
+                    <div class="col-md-6 column">
+                        <form class="needs-validation" novalidate="" action="addnotice" method="post" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">文章标题</label>
+                                <input type="text" name="headline" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Smallfault">所在栏目</label>
+                                <select class="form-control" id="nclassify" name="nclassify">
+                                    <option>A类文章</option>
+                                    <option>B类文章</option>
+                                    <option>C类文章</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputFile">上传图片</label>
+                                <input type="file" id="exampleInputFile" name="picture"/>
+                            </div>
+                            <div class="form-group">
+                                <label><span class="impInfo"></span>文章内容</label>
+                                <div class="kv-item-content">
+                                    <textarea id="article" name="article" style="width:600px;height:240px;"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-md-4 column">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 column">
+
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0"><a href="/notice">新建公告</a></h6>
+                            <small class="text-muted">New process</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0"><a href="/mynotice/1">我发布的公告</a></h6>
+                            <small class="text-muted">My process</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0"><a href="/alnotice/1">所有公告</a></h6><!--#allWorkOrder-->
+                            <small class="text-muted">All work orders</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+{% endblock %}
+

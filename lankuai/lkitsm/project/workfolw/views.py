@@ -193,12 +193,13 @@ def onefolw(request ,wid):
 from .models import Notice ,Classify
 #公告填写
 def notice(request):
+    username = request.session["username"]
     cfyList = Classify.objects.all()
     print(cfyList ,"所有-----------------------------------------")
     #for cfy in cfyList:
         #print(cfy.classify)
 
-    return render(request ,"workfolw/notice.html" )
+    return render(request ,"workfolw/notice.html" ,{"username":username} )
 
 from project import settings
 
@@ -231,6 +232,7 @@ def addnotice(request):
 
 #展示
 def inform(request ,pageid):
+
     path = request.path
     print(path) # /0222145148668
 
@@ -244,11 +246,11 @@ def inform(request ,pageid):
     user = User.objects.get(uname=username)
     if user.role == 3 and notice.audit == False:
         display = "block"
-        return render(request, "workfolw/show.html", {"notice": notice, "display": display})
+        return render(request, "workfolw/show.html", {"notice": notice, "display": display ,"username":username})
     else:
         display = "none"
 
-        return render(request ,"workfolw/show.html" ,{"notice":notice ,"display":display})
+        return render(request ,"workfolw/show.html" ,{"notice":notice ,"display":display ,"username":username})
 
 #总经理同意
 def addyes(request):
@@ -267,14 +269,15 @@ def mynotice(request ,pageid):
     noticeList = Notice.objects.filter(nname=username)
     paginator = Paginator(noticeList, 5)
     page = paginator.page(pageid)
-    return render(request, "workfolw/mynotice.html" ,{"noticeList":page})
+    return render(request, "workfolw/mynotice.html" ,{"noticeList":page ,"username":username})
 
 # 所有公告
 def alnotice(request ,pageid):
+    username = request.session["username"]
     noticeList = Notice.objects.all()
     paginator = Paginator(noticeList, 5)
     page = paginator.page(pageid)
-    return render(request, "workfolw/mynotice.html" ,{"noticeList":page})
+    return render(request, "workfolw/alnotice.html" ,{"noticeList":page ,"username":username})
 
 
 

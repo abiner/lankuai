@@ -15,29 +15,41 @@ class UserloginForm(forms.Form):
 #login 判断账号密码，进入index
 def login(request):
     #不能同时在线两个同一账号
-    #if request.session.get('is_login', None):
-        #return redirect('/login')
+    if request.session.get('is_login', None):
+        return redirect('/index')
     if request.method == "POST":
         uf = UserloginForm(request.POST)
         if uf.is_valid():
             # 获取表单用户密码
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
+            message = "请输入账号密码"
             # 获取的表单数据与数据库进行比较
             user = User.objects.filter(uname__exact=username, upasswd__exact=password).filter(isDelect=True)
             if not user:
-                message = "账号密码不正确！或账号已注销！"
+                message = "账号密码不正确！"
                 # 登录失败跳转回原来登录页面
                 return render(request, 'login/login.html', {'message': message})
             else:
-                # 如果当前登录用户为 0 或 1 则传数据为hrworkfolw ，如果为 3 或 4 则传数据为 mrworkfolw
-                # 当前登录用户层级为？，显示？
-                user = User.objects.get(uname=username)
+                try :
+
+                    user = User.objects.get(uname=username)
+
+                except :
+                    return render(request ,"login/login.html")
 
                 # 保存session信息,是否登录，登录用户名
                 request.session["is_login"] = True
                 request.session["username"] = user.uname
+                # 关闭浏览器即清除session
+                request.session.set_expiry(0)
 
+                # 登录成功，重新生成token 保存到user
+                token = time.time() + random.randrange(1 ,100000)
+                user.utoken = str(token)
+                user.save()
+                # token 取出给到用户
+                request.session["token"] = user.utoken
                 return redirect('/index')
                 #return render(request ,"login/index.html")
     return render(request, 'login/login.html')
@@ -169,11 +181,7 @@ def adduser(request):
     if request.method == "POST":
         uname = request.POST.get("uname")
         upasswd = request.POST.get("upasswd")
-        gender = request.POST.get("ugender")
-        if gender == "男" :
-            ugender = 1
-        elif gender == "女" :
-            ugender = 0
+        ugender = request.POST.get("ugender")
         uCreatedate = request.POST.get("uCreatedate")
         print(type(uCreatedate) ,"入职日期-----------------------的类型")
 
@@ -200,6 +208,10 @@ def adduser(request):
         # 直接获取
         r = request.POST.get("role")                            #r  字符串
         print(r ,"这是角色-------------------------")
+        # 非临时工注册 为null
+        reporttime = ""
+        manager = ""
+        howyear = ""
 
         if r:
             Rrole = Role.objects.get(rrole=r)
@@ -221,10 +233,10 @@ def adduser(request):
             print(type(uupoto) ,"照片是什么类型-------------------------")
             print(uname,upasswd,ugender,uCreatedate,uupoto,uworkid,uidcard,ubirthday ,uphone,uemail,ufirstcontact,uconphone
                    ,uaddress,ueduschool,ueducation,uorigin,udepname,unit,role,jobgrade,technicalgrade,ulasttime
-                   ,isDelect,utoken)
+                   ,isDelect,utoken ,reporttime ,manager ,howyear)
             user = User.createUser(uname,upasswd,ugender,uCreatedate,uupoto,uworkid,uidcard,ubirthday ,uphone,uemail,ufirstcontact,uconphone
                    ,uaddress,ueduschool,ueducation,uorigin,udepname,unit,role,jobgrade,technicalgrade,ulasttime
-                   ,isDelect,utoken)
+                   ,isDelect,utoken ,reporttime ,manager ,howyear)
 
             user.save()
             user.uCreatedate = uCreatedate
@@ -237,6 +249,62 @@ def adduser(request):
                         pic.write(item)
 
             return redirect('/login/')
+
+
+
+
+def temporaryuser(request):
+
+    return render(request ,"login/temporaryuser.html")
+
+def addtemporaryuser(request):
+    print("我需要确定你来到了--------------addtemporaryuser------------")
+    if request.method == "POST":
+        uname = request.POST.get("uname")
+        upasswd = request.POST.get("upasswd")
+        uphone = request.POST.get("uphone")
+        uaddress = request.POST.get("uaddress")
+        ugender = request.POST.get("ugender")
+        manager = request.POST.get("manager")
+        ueducation = request.POST.get("ueducation")
+        howyear = request.POST.get("howyear")
+        uCreatedate = "1900-01-01"
+        uupoto = ""
+        uworkid = ""
+        uidcard = ""
+        ubirthday = "1900-01-01"
+        uemail = ""
+        ufirstcontact = ""
+        uconphone = ""
+        ueduschool = ""
+        uorigin = ""
+        udepname = ""
+        unit = ""
+        role = 0
+        jobgrade = 0
+        technicalgrade = 1
+        ulasttime = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
+        reporttime = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
+        isDelect = False
+        utoken = time.time() + random.randrange(1 ,100000)
+
+        print(uname, upasswd, ugender, uCreatedate, uupoto, uworkid, uidcard, ubirthday, uphone,
+                               uemail, ufirstcontact, uconphone
+                               , uaddress, ueduschool, ueducation, uorigin, udepname, unit, role, jobgrade,
+                               technicalgrade, ulasttime
+                               , isDelect, utoken, reporttime, manager, howyear)
+
+        user = User.createUser(uname, upasswd, ugender, uCreatedate, uupoto, uworkid, uidcard, ubirthday, uphone,
+                               uemail, ufirstcontact, uconphone
+                               , uaddress, ueduschool, ueducation, uorigin, udepname, unit, role, jobgrade,
+                               technicalgrade, ulasttime
+                               , isDelect, utoken, reporttime, manager, howyear)
+        user.save()
+        return redirect('/login/')
+
+
+
+
 
 from django.core.paginator import Paginator
 #人事停用账户
@@ -272,14 +340,59 @@ def subtractuser(request ,pageid):
 
 #注销
 def logout(request):
-    print("我要注销，这是注销开始前")
     del request.session['is_login']
     #del request.session['user_id']
     del request.session['username']
-    print("我要注销，这是注销开始后")
     return redirect("/login/")
 
 
+# 主页，更多 more
+def more(request):
 
+    return render(request ,"login/more.html")
+'''
+    username = request.session["username"]
+    user = User.objects.get(uname=username)
+    # 采购 ，申请人为自己，并到了收货，你需要确认收货时间
+    pafList = purchaseApplyFor.objects.filter(pname=username).filter(pcourse=3)
+    dep = Departments.objects.get(depname=user.udepname)
+    noticeList = Notice.objects.all().filter(audit=True).order_by("-issuetime")[:5]
+    role3noticeList = Notice.objects.all().filter(audit=False).order_by("-issuetime")[:5]
+    if user.role == 0 :
+        lookOverList = Workflow.objects.filter(wname=username).order_by("wbegin")[:5]
+
+
+        return render(request, "login/more.html", {"username": username ,"pafList":pafList ,"noticeList":noticeList ,"lookOverList":lookOverList })
+
+    elif user.role == 1 :
+        lookOverList = Workflow.objects.filter(wname=username)
+        e2List = failureMessages.objects.filter(eventlevel=1)
+        if username == "唐涛":
+            pafList = purchaseApplyFor.objects.filter(pcourse=1)
+
+            return render(request, "login/more.html",
+                          {"username": username, "pafList": pafList, "noticeList": noticeList,
+                           "lookOverList": lookOverList ,"e2List":e2List})
+
+
+    elif user.role == 2 :
+        lookOverList = Workflow.objects.filter(wname=username)
+        approvalPending = Workflow.objects.filter(hierarchy0=dep.id)  # 只显示事件层级为本部门ID
+        if username == "郑敏龙":
+            print("这是维修审批----------------------------------------")
+            e2List = failureMessages.objects.filter(eventlevel=2)
+
+            print("这是采购审批----------------------------------------")
+            pafList = purchaseApplyFor.objects.filter(pcourse=2)
+            return render(request, "login/more.html",
+                          {"username": username, "pafList": pafList, "noticeList": noticeList,
+                           "lookOverList": lookOverList ,"e2List":e2List ,"approvalPending":approvalPending})
+
+    elif user.role == 3 :
+        lookOverList = Workflow.objects.filter(wname=username)
+        approvalPending = Workflow.objects.all().filter(hierarchy0=dep.id)
+        return render(request ,"login/more.html" ,{"username":username ,"role3noticeList":role3noticeList
+            ,"lookOverList":lookOverList ,"approvalPending":approvalPending})
+'''
 
 

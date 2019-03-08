@@ -1,65 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
 
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+{% extends 'base.html' %}
+
+{% block title %}所有工单{% endblock %}
+
+
+{% block linkscript %}
     <style>
         #aaa {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-
     </style>
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-<h1>我的合同</h1>
+{% endblock %}
 
-<table class="table table-hover" style="table-layout: fixed;">
-    <thead>
-    <tr>
-        <th>公告ID</th>
-        <th>作者</th>
-        <th>文章标题</th>
-        <th>发布时间</th>
-        <th>所属栏目</th>
-        <th>是否同意发布</th>
-        <th>文章内容</th>
-    </tr>
-    </thead>
 
-    <tbody>
+{% block navigationbar %}
 
-    {% for sel in noticeList %}
-        <tr onclick="window.document.location = '/{{ sel.moticeid }}'">
-            <td>{{ sel.moticeid }}</td>
-            <td>{{ sel.nname }}</td>
-            <td id='aaa' title='{{ sel.headline }}' style='width: 50px; text-align: left;'>{{ sel.headline }}</td>
-            <td id='aaa' title='{{ sel.issuetime }}' style='width: 50px; text-align: left;'>{{ sel.issuetime }}</td>
-            <td id='aaa' title='{{ sel.nclassify }}' style='width: 50px; text-align: left;'>{{ sel.nclassify }}</td>
-            <td id='aaa' title='{{ sel.audit }}' style='width: 50px; text-align: left;'>{{ sel.audit }}</td>
-            <td id='aaa' title='{{ sel.article }}' style='width: 50px; text-align: left;'>{{ sel.article }}</td>
-        </tr>
-    {% endfor %}
+{% endblock %}
 
-    </tbody>
-</table>
-<a href="/notice" class="btn btn-info">新建流程</a>
-<div class="row clearfix">
-    <div class="col-md-12 column text-center">
-        <ul class="pagination">
-            {% for index in noticeList.paginator.page_range %}
+
+
+{% block content %}
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+
+
+            <ul class="breadcrumb">
                 <li>
-                    <a href="/mynotice/{{ index }}">{{ index }}</a>
+                    <a href="/index">首页</a>
                 </li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
+                <li>
+                    <a href="/notice">新建通知&公告</a>
+                </li>
+                <li class="active">
+                    所有公告
+                </li>
+            </ul>
 
-</body>
-</html>
+            <table class="table table-hover" style="table-layout: fixed;">
+                <thead>
+                <tr>
+                    <th>公告ID</th>
+                    <th>作者</th>
+                    <th>文章标题</th>
+                    <th>发布时间</th>
+                    <th>所属栏目</th>
+                    <th>是否同意发布</th>
+                    <th>文章内容</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                {% for sel in noticeList %}
+                    <tr onclick="window.document.location = '/{{ sel.moticeid }}'">
+                        <td>{{ sel.moticeid }}</td>
+                        <td>{{ sel.nname }}</td>
+                        <td id='aaa' title='{{ sel.headline }}'
+                            style='width: 50px; text-align: left;'>{{ sel.headline }}</td>
+                        <td id='aaa' title='{{ sel.issuetime }}'
+                            style='width: 50px; text-align: left;'>{{ sel.issuetime }}</td>
+                        <td id='aaa' title='{{ sel.nclassify }}'
+                            style='width: 50px; text-align: left;'>{{ sel.nclassify }}</td>
+                        <td id='aaa' title='{{ sel.audit }}' style='width: 50px; text-align: left;'>{{ sel.audit }}</td>
+                        <td id='aaa' title='{{ sel.article }}'
+                            style='width: 50px; text-align: left;'>{{ sel.article }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column text-center">
+            <ul class="pagination">
+                {% for index in noticeList.paginator.page_range %}
+                    <li>
+                        <a href="/mynotice/{{ index }}">{{ index }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
+
