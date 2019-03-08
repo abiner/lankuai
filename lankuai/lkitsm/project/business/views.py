@@ -5,16 +5,24 @@ from django.shortcuts import render, render_to_response, redirect
 from .models import Business ,files
 from website.models import Departments
 from django.core.paginator import Paginator
+from login .models import User
 import os
+from django.contrib import messages
+
 def busines(request):
     username = request.session['username']
     print(username ,"当前登录用户")
 
-    #部门经理
-    dname = Departments.objects.get(manager=username)
+    user = User.objects.get(uname=username)
+    print(user.role ,"当前登录这点role是什么？？？")
+    if user.role == 2 or user.role == 3:
+        print("我们职位比较高")
+        return render(request, 'business/business.html', {"title": "商务合同" , "username":username})
 
-
-    return render(request, 'business/business.html', {"title": "商务合同" , "username":username})
+    else:
+        print("我们职位比较低")
+        messages.add_message(request ,messages.DEBUG ,'权限不足')
+        return redirect('/index')
 
 
 from django.shortcuts import render,HttpResponse,HttpResponseRedirect

@@ -1,0 +1,270 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}更多{% endblock %}
+
+
+{% block linkscript %}
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Library</a>
+                </li>
+                <li class="active">
+                    Data
+                </li>
+            </ul>
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-md-2 column">
+                    </div>
+                    <div class="col-md-10 column">
+
+
+                        {% if lookOverList %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">我的申请</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                                           data-pagination="true" data-side-pagination="client" data-page-size="5">
+                                        <thead class="bg-default">
+
+                                        <tr>
+                                            <th> 申请人</th>
+                                            <th> 申请类型</th>
+                                            <th> 事由</th>
+                                            <th>审批详情</th>
+                                        </tr>
+
+                                        </thead>
+
+                                        <tbody>
+                                        {% for item in lookOverList %}
+                                            <tr onclick="window.document.location = '/hrworkfolw/myfolw/{{ item.wid }}/'">
+                                                <td> {{ item.wname }} </td>
+                                                <td> {{ item.wapplytype }} </td>
+                                                <td id='aaa' title='{{ item.wreasons }}'
+                                                    style='width: 50px; text-align: left;'> {{ item.wreasons }} </td>
+                                                <td>{{ details }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer text-right"><a href="more">更多</a></div>
+                            </div>
+                        {% endif %}
+
+
+                        {% if approvalPending %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="display: {{ what }}">
+                                    <h3 class="panel-title">别人的申请</h3>
+                                </div>
+                                <div class="panel-body" style="display: {{ what }}">
+                                    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                                           data-pagination="true" data-side-pagination="client" data-page-size="5">
+                                        <thead class="bg-default">
+                                        <tr>
+                                            <th> 申请人</th>
+                                            <th> 申请类型</th>
+                                            <th> 事由</th>
+                                            <th>审批详情</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in approvalPending %}
+                                            <tr onclick="window.document.location ='{{ item.wid }}'">
+                                                <td id='aaa' title='{{ item.wid }}'
+                                                    style='width: 50px; text-align: left;'> {{ item.wname }} </td>
+                                                <td> {{ item.wapplytype }} </td>
+                                                <td id='aaa' title='{{ item.wreasons }}'
+                                                    style='width: 50px; text-align: left;'> {{ item.wreasons }} </td>
+                                                <td>{{ details }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="panel-footer text-right"><a href="#">更多</a></div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if e2List %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="display: {{ what }}">
+                                    <h3 class="panel-title">维修申请</h3>
+                                </div>
+                                <div class="panel-body" style="display: {{ what }}">
+                                    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                                           data-pagination="true" data-side-pagination="client" data-page-size="5">
+                                        <thead class="bg-default">
+
+                                        <tr>
+                                            <th> 申请人</th>
+                                            <th> 故障分类</th>
+                                            <th> 设备名称型号</th>
+                                            <th>故障描述</th>
+                                            <th>申请时间</th>
+                                        </tr>
+
+                                        </thead>
+
+                                        <tbody>
+                                        {% for item in e2List %}
+                                            <tr onclick="window.document.location ='repairANDbuyer/{{ item.faultID }}{{ role }}'">
+                                                <td> {{ item.fname }} </td>
+                                                <td> {{ item.faultclass }} </td>
+                                                <td id='aaa' title='{{ item.brandtype }}'
+                                                    style='width: 50px; text-align: left;'> {{ item.brandtype }} </td>
+                                                <td id='aaa' title='{{ item.faultdescribe }}'
+                                                    style='width: 50px; text-align: left;'>{{ item.faultdescribe }}</td>
+                                                <td>{{ item.subtime }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="panel-footer text-right"><a href="#">更多</a></div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+                        {% if pafList %}
+                            <div class="panel panel-default">
+                                <!-- 采购申请 -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">采购申请</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                                           data-pagination="true" data-side-pagination="client" data-page-size="5">
+                                        <thead class="bg-default">
+
+                                        <tr>
+                                            <th>采购ID</th>
+                                            <th>申请人部门</th>
+                                            <th>申请人姓名</th>
+                                            <th>申请时间</th>
+                                            <th>备注</th>
+                                        </tr>
+
+                                        </thead>
+
+                                        <tbody>
+                                        {% for item in pafList %}
+                                            <tr onclick="window.document.location ='repairANDbuyer/{{ item.purchaseID }}{{ role }}'">
+                                                <td> {{ item.purchaseID }} </td>
+                                                <td> {{ item.pdemp }} </td>
+                                                <td> {{ item.pname }} </td>
+                                                <td id='aaa' title='{{ item.pdate }}'
+                                                    style='width: 50px; text-align: left;'>{{ item.pdate }}</td>
+                                                <td id='aaa' title='{{ item.pcomment }}'
+                                                    style='width: 50px; text-align: left;'>{{ item.pcomment }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="panel-footer text-right"><a href="#">更多</a></div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+                        {% if noticeList %}
+                            <div class="panel panel-default">
+                                <!-- 第三列，第一行，展示 -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">通知&公告</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                                           data-pagination="true" data-side-pagination="client" data-page-size="5">
+                                        <thead class="bg-default">
+
+                                        <tr>
+                                            <th> 序号</th>
+                                            <th> 标题</th>
+                                            <th> 时间</th>
+                                        </tr>
+
+                                        </thead>
+
+                                        <tbody>
+                                        {% for item in noticeList %}
+                                            <tr onclick="window.document.location = '/{{ item.moticeid }}'">
+                                                <td> {{ item.id }} </td>
+                                                <td id='aaa' title='{{ item.headline }}'
+                                                    style='width: 50px; text-align: left;'> {{ item.headline }} </td>
+                                                <td> {{ item.issuetime }} </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer text-right"><a href="#">更多</a></div>
+                            </div>
+                        {% endif %}
+
+                        {% if role3noticeList %}
+                            <div class="panel panel-default" style="display: {{ display }}">
+                                <!-- 第三列，第二行，展示 -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">审批~通知&公告</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <table id="table_page" class="table table-hover" style="table-layout: fixed;"
+                                           data-pagination="true" data-side-pagination="client" data-page-size="5">
+                                        <thead class="bg-default">
+
+                                        <tr>
+                                            <th> 序号</th>
+                                            <th> 标题</th>
+                                            <th> 时间</th>
+                                        </tr>
+
+                                        </thead>
+
+                                        <tbody>
+                                        {% for item in role3noticeList %}
+                                            <tr onclick="window.document.location = '/{{ item.moticeid }}'">
+                                                <td> {{ item.id }} </td>
+                                                <td id='aaa' title='{{ item.headline }}'
+                                                    style='width: 50px; text-align: left;'> {{ item.headline }} </td>
+                                                <td> {{ item.issuetime }} </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="panel-footer text-right"><a href="#">更多</a></div>
+                            </div>
+                        {% endif %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+
+{% endblock %}
+
+
