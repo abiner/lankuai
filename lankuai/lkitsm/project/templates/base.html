@@ -28,6 +28,11 @@
             background: red;
             /*Your code, e.g. background: red */
         }
+
+        #setfont{
+        color:white;
+        font-size:1.1em
+        }
     </style>
     <script type="text/javascript" src="../static/jquery/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
@@ -66,30 +71,112 @@
                 </h1>
             </span>
         </div>
-        <div class=" col-md-offset-0 column" style="margin:30px 0px 0px 0px">
 
-            <div class="btn-group">
-  <a class="btn dropdown-toggle btn " data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-th-list"></i>
-    {{ username }}
-    
-  </a>
-  <ul class="dropdown-menu">
 
-       <li ><a href="#" class="dropdown-item"><i class="glyphicon glyphicon-user"></i> 个人信息</a></li>
-      <li><a href="/logout" class="dropdown-item"><i class="glyphicon glyphicon-off"></i> 退出登录</a></li>
-
-    <!-- dropdown menu links -->
-  </ul>
 </div>
-        </div>
-
-
     </div>
-</div>
 
-{% block navigationbar %}
+    <div class="row clearfix">
+        <div class="col-xs-12 col-md-12 column hidden-xs"><!--hidden-xs移动端手机端不显示-->
+            <nav class="navbar " role="navigation" style="background:#337ab7">
+                <div class="container-fluid" >
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#example-navbar-collapse">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
 
-{% endblock %}
+                    </div>
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                        <ul class="nav navbar-nav"  >
+                            <li ><a href="/index" style="color:white;font-size:1.3em" >首页</ai>
+                            <li><a href="/writeWorkList"   id="setfont">运维系统</a></li>
+                            <li><a href="/business/" id="setfont">商务管理</a></li>
+                            <li><a href="#" id="setfont">资产管理</a></li>
+                            <li class="dropdown">
+                                <a href="#"  class="dropdown-toggle" data-toggle="dropdown" id="setfont"> 绩效管理 <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">服务记录</a></li>
+                                    <li><a href="#">考试记录</a></li>
+                                    <li><a href="#">考勤记录</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">分离的链接</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">另一个分离的链接</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"  id="setfont">
+                                    人事管理
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/register/">入职信息</a></li>
+                                    <li><a href="/{{ myrole }}/">工作流程</a></li>
+                                    <li><a href="#">职位变更</a></li>
+                                    <li><a href="#"></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/notice">公告管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"  id="setfont"> 数据中心 <b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">项目运维数据</a></li>
+                                    <li><a href="#">公司运维数据</a></li>
+                                    <li><a href="#">个人明细数据</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">分离的链接</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">另一个分离的链接</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="setfont">维修采购<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/repairANDbuyer/repair">维修</a></li>
+                                    <li><a href="repairANDbuyer/buyer">采购</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"  id="setfont"> 蓝快课堂<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/media/1">学习视频</a></li>
+                                    <li><a href="media/upload">上传视频</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="http://www.lansekuaixian.com/bbs" id="setfont">蓝快家园BBS</a></li>
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                                         <li class="dropdown " >
+                                  <a class=" " data-toggle="dropdown" href="#" id="setfont"><i class="glyphicon glyphicon-home"></i>
+                                        {{ username }}</a>
+                                <ul class="dropdown-menu">
+                                    <li ><a href="#" class="dropdown-item"><i class="glyphicon glyphicon-user"></i> 个人信息</a></li>
+      <li><a href="/logout" class="dropdown-item"><i class="glyphicon glyphicon-off"></i> 退出登录</a></li>
+                                </ul>
+                            </li>
+          </ul>
+        </li>
+      </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>      <!-- 导航 -->
+
+
+
 
 {% block content %}
 

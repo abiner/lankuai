@@ -64,19 +64,19 @@
             <div class="col-md-12 column">
                 <ul class="breadcrumb">
                     <li>
-                        <a href="/index">首页</a>
+                        <a href="/writeWorkList">运维系统</a>
                     </li>
-                    <li class="active">
-                        运维系统
+                     <li class="active">
+                        新建工单
                     </li>
                 </ul>
             </div>
         </div><!-- 导航栏 -->
 
 <div class="container">
-        <div class="row clearfix">
+        <div class="row clearfix " >
 
-            <div class="col-md-8 column">
+            <div class="col-md-9 column panel panel-default">
                 <form class="needs-validation" novalidate="" action="addWriteWorkList" method="post">
                     <div class="row clearfix">
                         <div class="col-md-4 column">
@@ -146,19 +146,19 @@
                     <div class="row clearfix">
                         <div class="col-md-12 column">
                             <blockquote>
-                                <label for="Eventtheme">事件主题<span class="text-muted">(Optional)</span></label>
+                                <label for="Eventtheme">事件主题</label>
                                 <input type="text" class="form-control" id="Eventtheme" placeholder="请简约描述"
                                        name="incidentTheme">
                             </blockquote>
                             <blockquote>
                                 <label class="control-label" for="Eventdescribe">事件描述</label>
-                                <textarea type="" class="form-control" id="Eventdescribe"
-                                          name="incidentDescribe"> </textarea>
+                                <textarea rows="5" type="" class="form-control" id="Eventdescribe"
+                                          name="incidentDescribe" > </textarea>
                                 <small class="text-muted">请详细描述故障现象</small>
                             </blockquote>
                             <blockquote>
                                 <label class="control-label" for="Eventhandling">处理过程</label>
-                                <textarea type="" class="form-control" id="Eventhandling"
+                                <textarea  rows="5" type="" class="form-control" id="Eventhandling"
                                           name="manageCourse"> </textarea>
                                 <small class="text-muted">请详细描述处理过程及结果</small>
                             </blockquote>
@@ -196,38 +196,38 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin:20px 0 20px 0;">提交</button>
                 </form>
             </div>
 
 
-            <div class="col-md-4 column">
+            <div class="col-md-3 column">
 
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0"><a href="writeWorkList">新建工单</a></h6>
+                            <h5 class="my-0"><a href="writeWorkList">新建工单</a></h5>
                             <small class="text-muted">New process</small>
                         </div>
                         <span class="text-muted"></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0"><a href="/Iestablish/1">我创办的</a></h6>
+                            <h5 class="my-0"><a href="/Iestablish/1">我创办的</a></h5>
                             <small class="text-muted">My process</small>
                         </div>
                         <span class="text-muted"></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0"><a href="/delay/1">我的待办</a></h6>
+                            <h5 class="my-0"><a href="/delay/1">我的待办</a></h5>
                             <small class="text-muted">Backlog process</small>
                         </div>
                         <span class="text-muted"></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0"><a href="/allWorkOrder/1">所有工单(同单位内)</a></h6><!--#allWorkOrder-->
+                            <h5 class="my-0"><a href="/allWorkOrder/1">所有工单(同单位内)</a></h5><!--#allWorkOrder-->
                             <small class="text-muted">All work orders</small>
                         </div>
                         <span class="text-muted"></span>
@@ -236,7 +236,15 @@
                 </ul>
 
             </div>
-
+            <div class="col-md-3 column">
+                 <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0"><a href="writeWorkList">新建工单注意事项</a></h6>
+                            <small class="text-muted">事件级别分等级，分别对应的是：1.高级；2.普通；3.一般；</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+            </div>
 
         </div>
     </div>
