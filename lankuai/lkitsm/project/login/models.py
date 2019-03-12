@@ -1,15 +1,6 @@
 from django.db import models
 
 
-'''
-记录标识,tu_id,bigint,      pk, not null
-所属组织,to_id,             fk, not null
-
-
-
-
-
-'''
 
 # 员工信息                  可能需要添加到字段   ：登录时间，上次登录时间，登录次数
 
@@ -114,6 +105,191 @@ class technicalGrade(models.Model):
         verbose_name = '技术等级表'
         verbose_name_plural = '技术等级表'
         db_table = 'technicalgrade'
+
+
+# 组织表（TOrganization）
+class TOrganization(models.Model):
+    to_id = models.IntegerField(u"组id" ,primary_key=True)
+    parent_to_id = models.IntegerField(u"父组id")
+    org_name = models.CharField(u"组名称" ,max_length=64)
+    gen_time = models.DateField(u"创建时间" ,auto_now=True)
+    description = models.CharField(u"组织描述" ,max_length=200)
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.org_name  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '组织表'
+        verbose_name_plural = '组织表'
+        db_table = 'torganization'
+
+
+
+# 角色表（TRole）
+class TRole(models.Model):
+    tr_id = models.IntegerField(u"角色id" ,primary_key=True)
+    parent_tr_id = models.IntegerField(u"父级角色id")
+    role_name = models.CharField(u"角色名称" ,max_length=64)
+    gen_time = models.DateField(u"创建时间" ,auto_now=True)
+    description = models.CharField(u"组织描述", max_length=200)
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.role_name  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '角色表'
+        verbose_name_plural = '角色表'
+        db_table = 'trole'
+
+# 权限表（TRight）
+class TRight(models.Model):
+    tr_id = models.IntegerField(u"权限id" ,primary_key=True)
+    parent_tr_id = models.IntegerField(u"父权限")
+    right_name = models.CharField(u"权限名称" ,max_length=64)
+    description = models.CharField(u"组织描述", max_length=200)
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.right_name  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '权限表'
+        verbose_name_plural = '权限表'
+        db_table = 'tright'
+
+# 组表（TGroup）
+class TGroup(models.Model):
+    trr_id = models.IntegerField(u"组id" ,primary_key=True)
+    parent_tg_id = models.IntegerField(u"父组id")
+    group_name = models.CharField(u"组名称" ,max_length=64)
+    gen_time = models.DateField(u"创建时间" ,auto_now=True)
+    description = models.CharField(u"组描述", max_length=200)
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.group_name  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '组表'
+        verbose_name_plural = '组表'
+        db_table = 'tgroup'
+
+
+# 角色权限表（TRoleRightRelation）
+class TRoleRightRelation(models.Model):
+    type = (
+        (0, '可访问'),
+        (1, '可授权'),
+    )
+    trr_id = models.IntegerField(u"记录标识" ,primary_key=True)
+    Role_id = models.ForeignKey("TRole" ,on_delete=models.CASCADE)
+    right_id = models.ForeignKey("TRight", on_delete=models.CASCADE)
+    right_type = models.CharField(u"权限类型" ,max_length=32 ,choices=type ,default="可访问")
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.trr_id  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '角色权限表'
+        verbose_name_plural = '角色权限表'
+        db_table = 'trolerightrelation'
+
+
+# 组权限表（TGroupRightRelation）
+class TGroupRightRelation(models.Model):
+    type = (
+        (0, '可访问'),
+        (1, '可授权'),
+    )
+    tgr_id = models.IntegerField(u"记录标识" ,primary_key=True)
+    tg_id = models.ForeignKey("TGroup" ,on_delete=models.CASCADE) # 组
+    tr_id = models.ForeignKey("TRight", on_delete=models.CASCADE) # 权限
+    right_type = models.CharField(u"权限类型" ,max_length=32 ,choices=type ,default="可访问")
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.tgr_id  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '组权限表'
+        verbose_name_plural = '组权限表'
+        db_table = 'tgrouprightrelation'
+
+
+# 组角色表（TGroupRoleRelation）
+class TGroupRoleRelation(models.Model):
+    tgr_id = models.IntegerField(u"记录标识", primary_key=True)
+    tg_id = models.ForeignKey("TGroup", on_delete=models.CASCADE)#关联组
+    tr_id = models.ForeignKey("TRole", on_delete=models.CASCADE)#关联角色
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.tgr_id  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '组角色表'
+        verbose_name_plural = '组角色表'
+        db_table = 'tgrouprolerelation'
+
+# 用户权限表（TUserRightRelation）
+class TUserRightRelation(models.Model):
+    type = (
+        (0, '可访问'),
+        (1, '可授权'),
+    )
+    tur_id = models.IntegerField(u"记录标识", primary_key=True)
+    tu_id = models.ForeignKey("User", on_delete=models.CASCADE) #关联用户
+    tr_id = models.ForeignKey("TRight", on_delete=models.CASCADE) #关联权限
+    right_type = models.CharField(u"权限类型", max_length=32, choices=type, default="可访问")
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.tur_id  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '用户权限表'
+        verbose_name_plural = '用户权限表'
+        db_table = 'tuserrightrelation'
+
+# 用户角色表（TUserRoleRelation）
+class TUserRoleRelation(models.Model):
+    tur_id = models.IntegerField(u"记录标识", primary_key=True)
+    tu_id = models.ForeignKey("User", on_delete=models.CASCADE) #关联用户
+    tr_id = models.ForeignKey("TRole", on_delete=models.CASCADE) # 管理角色
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.tur_id  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '用户角色表'
+        verbose_name_plural = '用户角色表'
+        db_table = 'tuserrolerelation'
+
+# 用户组表（TUserGroupRelation）
+class TUserGroupRelation(models.Model):
+    tur_id = models.IntegerField(u"记录标识", primary_key=True)
+    tu_id = models.ForeignKey("User", on_delete=models.CASCADE) #关联用户
+    tg_id = models.ForeignKey("TGroup", on_delete=models.CASCADE) #关联组
+    isDelete = models.BooleanField(default=False)
+    def __str__(self):
+        return '%s' % self.tur_id  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '用户组表'
+        verbose_name_plural = '用户组表'
+        db_table = 'tusergrouprelation'
+
+# 操作日志表（TLog）
+class TLog(models.Model):
+    log_id = models.IntegerField(u"日志id" ,primary_key=True)
+    tu_id = models.ForeignKey("User" ,on_delete=models.CASCADE) #操作人
+    op_type = models.IntegerField(u"操作类型")
+    content = models.CharField(u"操作内容" ,max_length=200)
+    isDelete = models.BooleanField(default=False)
+    gen_time = models.DateField(u"操作时间" ,auto_now=True)
+
+    def __str__(self):
+        return '%s' % self.content  # 返回属性的显示内同
+
+    class Meta:
+        verbose_name = '操作日志表'
+        verbose_name_plural = '操作日志表'
+        db_table = 'tlog'
 
 
 
