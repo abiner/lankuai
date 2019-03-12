@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../static/jquery/jquery.min.js"></script>
+    <style>
+        .i_class-alert {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-top: -5px;
+            background: url(http://hbkj-pc-web-img.oss-cn-beijing.aliyuncs.com/pru_bb_icon.png) -6px -7px no-repeat;
+            vertical-align: middle;
+        }
+
+        .dp-model-alert {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9999;
+            display: none;
+        }
+
+        .content-alert {
+            width: 450px;
+            height: 150px;
+            background: #fff;
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            margin-left: -75px;
+            margin-top: -320px;
+            border: 5px solid #ccc;
+        }
+
+        .content-top-alert {
+            height: 30px;
+            background: #f8f8f8;
+            padding: 0 7px;
+        }
+
+        .left-alert {
+            line-height: 30px;
+            float: left;
+        }
+
+        .right-close-alert {
+            float: right;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .content-bottom-alert {
+            height: 120px;
+            position: relative;
+        }
+
+        .content-bottom-c-alert {
+            width: 270px;
+            height: 40px;
+            position: absolute;
+            top: 30%;
+            left: 5%;
+        }
+
+        .i-alert {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-top: -5px;
+            background: url(http://hbkj-pc-web-img.oss-cn-beijing.aliyuncs.com/pru_bb_icon.png) -6px -7px no-repeat;
+            vertical-align: middle;
+        }
+
+        .span-alert {
+            line-height: 40px;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
+        .content-btn-alert {
+            width: 125px;
+            height: 40px;
+            background: red;
+            position: absolute;
+            top: 30%;
+            right: 5%;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .a-alert {
+            text-decoration: none;
+            color: #fff;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<button class='collect-btn'>点击收藏</button>
+
+<div class='dp-model-alert'>
+    <div class='content-alert'>
+        <div class='content-top-alert'>
+            <span class='left-alert span-alert'>温馨提示</span> <span
+                class='right-close-alert span-alert'>✖</span>
+        </div>
+        <div class='content-bottom-alert'>
+            <div class='content-bottom-c-alert'>
+                <i class="i-alert"></i> <span
+                    class='text-content1-alert span-alert'>收藏成功 </span>
+            </div>
+            <a class="a-alert" href="/myhb/myCollection/000/produce">
+                <div class='content-btn-alert'>查看收藏></div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    $(function () {
+        $('.collect-btn').click(function () {
+            $('.dp-model-alert').show().delay(3000).hide(1000);//1000 表示展示1秒后消失
+        })
+        $('.right-close-alert').click(function () {
+            $('.dp-model-alert').hide()
+        })
+    })
+</script>
+
+</html>

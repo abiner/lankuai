@@ -310,7 +310,7 @@ def addWriteWorkList(request):
                         incidentRankList , incidentStateList, incidentTheme, incidentDescribe, manageCourse,
                         creator ,workStateList, flowHandler)
         workWM.save()
-        messages.add_message(request, messages.SUCCESS, 'Hello world.')
+        messages.add_message(request, messages.SUCCESS, "提交成功")
         return redirect('/writeWorkList')
 
 

@@ -10,8 +10,6 @@
 
 {% block linkscript %}
     <script src="../static/js/alert.js"></script>
-
-
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
@@ -34,14 +32,12 @@
             }, false);
         })();
     </script>
-
     <script>
         //执行一个laydate实例
         laydate.render({
             elem: '#test1' //指定元素
         });
     </script>
-
     <script>
         //执行一个laydate实例
         laydate.render({
@@ -49,31 +45,31 @@
         });
     </script>
 
-{% endblock %}
 
+    <script>
+        $('input[required]').before('<span style="color:red">*</span>');
+    </script>
+{% endblock %}
 
 {% block navigationbar %}
-
 {% endblock %}
-
-
 
 {% block content %}
 
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="/index">首页</a>
-                    </li>
-                    <li class="active">
-                        运维系统
-                    </li>
-                </ul>
-            </div>
-        </div><!-- 导航栏 -->
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/index">首页</a>
+                </li>
+                <li class="active">
+                    运维系统
+                </li>
+            </ul>
+        </div>
+    </div><!-- 导航栏 -->
 
-<div class="container">
+    <div class="container">
         <div class="row clearfix">
 
             <div class="col-md-8 column">
@@ -81,7 +77,8 @@
                     <div class="row clearfix">
                         <div class="col-md-4 column">
                             <label for="Createddatetime">开单时间</label>
-                            <input type="text" name="billingTime" class="form-control" id="Createddatetime" placeholder=""
+                            <input type="text" name="billingTime" class="form-control" id="Createddatetime"
+                                   placeholder=""
                                    value={{ nowTime }} required="" readonly="readonly">
                             <label for="Contacts">客户姓名</label>
                             <input type="text" class="form-control" id="Contacts" placeholder="" value="" required=""
@@ -91,7 +88,7 @@
                                 <option>请选择</option>
                             </select>
                             <label for="EventName">事件分类</label>
-                            <select class="form-control" id="EventName" required=""
+                            <select class="form-control" id="EventName" required
                                     name="incidentClaList">
                                 <option>故障类</option>
                                 <option>服务类</option>
@@ -102,17 +99,16 @@
                             <label for="WorkOrderNumber">工单号</label>
                             <input type="text" name="gongdanhao" class="form-control" id="WorkOrderNumber"
                                    placeholder=""
-                                   value={{ workOrderNo }} required="" readonly="readonly">
+                                   value={{ workOrderNo }} readonly="readonly" required>
                             <label for="Contactnumber">客户电话</label>
                             <input type="text" class="form-control" id="Contactnumber" placeholder="" value=""
-                                   required=""
-                                   name="clientPho">
+                                   required name="clientPho">
                             <label for="Smallfault">故障小类型</label>
-                            <select class="form-control" id="Smallfault" required="" name="faultClasssList">
+                            <select class="form-control" id="Smallfault" required name="faultClasssList">
                                 <option>请选择</option>
                             </select>
                             <label for="EventLevel">事件级别</label>
-                            <select class="form-control" id="EventLevel" required=""
+                            <select class="form-control" id="EventLevel" required
                                     name="incidentRankList">
                                 <option>3</option>
                                 <option>1</option>
@@ -123,20 +119,19 @@
                         </div>
                         <div class="col-md-4 column">
                             <label for="unitName">单位名称</label>
-                            <select class="form-control" id="WorkOrderNumber" required="" name="unitName">
+                            <select class="form-control" id="WorkOrderNumber" required name="unitName">
                                 <option>{{ unitName }}</option>
                             </select>
                             <label for="Contactposition">客户位置</label>
                             <input type="text" class="form-control" id="Contactposition" placeholder="" value=""
-                                   required=""
-                                   name="clientAddress">
+                                   required name="clientAddress">
                             <label for="Faultdetailed">故障明细</label>
-                            <select class="form-control" id="Faultdetailed" required=""
+                            <select class="form-control" id="Faultdetailed" required
                                     name="faultDetailList">
                                 <option value="">请选择</option>
                             </select>
                             <label for="Eventstate">事件状态</label>
-                            <select class="form-control" id="Eventstate" required=""
+                            <select class="form-control" id="Eventstate" required
                                     name="incidentStateList">
                                 <option>跟进</option>
                                 <option>关闭</option>
@@ -148,18 +143,18 @@
                             <blockquote>
                                 <label for="Eventtheme">事件主题<span class="text-muted">(Optional)</span></label>
                                 <input type="text" class="form-control" id="Eventtheme" placeholder="请简约描述"
-                                       name="incidentTheme">
+                                       name="incidentTheme" required>
                             </blockquote>
                             <blockquote>
                                 <label class="control-label" for="Eventdescribe">事件描述</label>
                                 <textarea type="" class="form-control" id="Eventdescribe"
-                                          name="incidentDescribe"> </textarea>
+                                          name="incidentDescribe" required> </textarea>
                                 <small class="text-muted">请详细描述故障现象</small>
                             </blockquote>
                             <blockquote>
                                 <label class="control-label" for="Eventhandling">处理过程</label>
                                 <textarea type="" class="form-control" id="Eventhandling"
-                                          name="manageCourse"> </textarea>
+                                          name="manageCourse" required> </textarea>
                                 <small class="text-muted">请详细描述处理过程及结果</small>
                             </blockquote>
                         </div>
@@ -196,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" id="ok">提交</button>
                 </form>
             </div>
 
@@ -236,7 +231,6 @@
                 </ul>
 
             </div>
-
 
         </div>
     </div>

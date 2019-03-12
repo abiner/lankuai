@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+﻿from django.shortcuts import render, redirect
 from .models import User ,Role ,Jobgrade ,technicalGrade
 from django import forms
 from website.models import Departments ,UnitName
@@ -15,41 +15,29 @@ class UserloginForm(forms.Form):
 #login 判断账号密码，进入index
 def login(request):
     #不能同时在线两个同一账号
-    if request.session.get('is_login', None):
-        return redirect('/index')
+    #if request.session.get('is_login', None):
+        #return redirect('/login')
     if request.method == "POST":
         uf = UserloginForm(request.POST)
         if uf.is_valid():
             # 获取表单用户密码
             username = uf.cleaned_data['username']
             password = uf.cleaned_data['password']
-            message = "请输入账号密码"
             # 获取的表单数据与数据库进行比较
             user = User.objects.filter(uname__exact=username, upasswd__exact=password).filter(isDelect=True)
             if not user:
-                message = "账号密码不正确！"
+                message = "账号密码不正确！或账号已注销！"
                 # 登录失败跳转回原来登录页面
                 return render(request, 'login/login.html', {'message': message})
             else:
-                try :
-
-                    user = User.objects.get(uname=username)
-
-                except :
-                    return render(request ,"login/login.html")
+                # 如果当前登录用户为 0 或 1 则传数据为hrworkfolw ，如果为 3 或 4 则传数据为 mrworkfolw
+                # 当前登录用户层级为？，显示？
+                user = User.objects.get(uname=username)
 
                 # 保存session信息,是否登录，登录用户名
                 request.session["is_login"] = True
                 request.session["username"] = user.uname
-                # 关闭浏览器即清除session
-                request.session.set_expiry(0)
 
-                # 登录成功，重新生成token 保存到user
-                token = time.time() + random.randrange(1 ,100000)
-                user.utoken = str(token)
-                user.save()
-                # token 取出给到用户
-                request.session["token"] = user.utoken
                 return redirect('/index')
                 #return render(request ,"login/index.html")
     return render(request, 'login/login.html')
@@ -248,7 +236,7 @@ def adduser(request):
                     for item in uupoto.chunks():
                         pic.write(item)
 
-            return redirect('/login/')
+            return redirect('/register/')
 
 
 

@@ -29,6 +29,102 @@
             /*Your code, e.g. background: red */
         }
     </style>
+    <style>
+        .i_class-alert {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-top: -5px;
+            background: url(http://hbkj-pc-web-img.oss-cn-beijing.aliyuncs.com/pru_bb_icon.png) -6px -7px no-repeat;
+            vertical-align: middle;
+        }
+
+        .dp-model-alert {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 9999;
+            display: none;
+        }
+
+        .content-alert {
+            width: 450px;
+            height: 150px;
+            background: #fff;
+            position: fixed;
+            top: 50%;
+            left: 45%;
+            margin-left: -75px;
+            margin-top: -320px;
+            border: 5px solid #ccc;
+        }
+
+        .content-top-alert {
+            height: 30px;
+            background: #f8f8f8;
+            padding: 0 7px;
+        }
+
+        .left-alert {
+            line-height: 30px;
+            float: left;
+        }
+
+        .right-close-alert {
+            float: right;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .content-bottom-alert {
+            height: 120px;
+            position: relative;
+        }
+
+        .content-bottom-c-alert {
+            width: 270px;
+            height: 40px;
+            position: absolute;
+            top: 30%;
+            left: 5%;
+        }
+
+        .i-alert {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-top: -5px;
+            background: url(http://hbkj-pc-web-img.oss-cn-beijing.aliyuncs.com/pru_bb_icon.png) -6px -7px no-repeat;
+            vertical-align: middle;
+        }
+
+        .span-alert {
+            line-height: 40px;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
+        .content-btn-alert {
+            width: 125px;
+            height: 40px;
+            background: red;
+            position: absolute;
+            top: 30%;
+            right: 5%;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .a-alert {
+            text-decoration: none;
+            color: #fff;
+            font-size: 12px;
+        }
+    </style>
     <script type="text/javascript" src="../static/jquery/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
 
@@ -38,14 +134,6 @@
 
 </head>
 <body>
-
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
 
 <div class="container-fluid">
@@ -69,18 +157,18 @@
         <div class=" col-md-offset-0 column" style="margin:20px 0px 0px 0px">
 
             <div class="btn-group">
-  <a class="btn dropdown-toggle btn " data-toggle="dropdown" href="#">
-    {{ username }}<i class="fa fa-user"></i>
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
+                <a class="btn dropdown-toggle btn " data-toggle="dropdown" href="#">
+                    {{ username }}<i class="fa fa-user"></i>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
 
-       <li ><a href="#" class="dropdown-item">个人信息</a></li>
-      <li><a href="/logout" class="dropdown-item">注销系统</a></li>
+                    <li><a href="#" class="dropdown-item">个人信息</a></li>
+                    <li><a href="/logout" class="dropdown-item">注销系统</a></li>
 
-    <!-- dropdown menu links -->
-  </ul>
-</div>
+                    <!-- dropdown menu links -->
+                </ul>
+            </div>
         </div>
 
 
@@ -122,6 +210,42 @@
     </div>
 </div>
 
+
+<!--
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+-->
+
+<div class='dp-model-alert'>
+    <div class='content-alert'>
+        <div class='content-top-alert'>
+            <span class='left-alert span-alert'>温馨提示</span>
+            <span class='right-close-alert span-alert'>✖</span>
+        </div>
+        <div class='content-bottom-alert'>
+            <div class='content-bottom-c-alert'>
+                <i class="i-alert"></i> <span class='text-content1-alert span-alert'>{{ message }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('#ok').click(function () {
+            $('.dp-model-alert').show().delay(3000).hide(1000);//1000 表示展示1秒后消失
+        });
+        $('.right-close-alert').click(function () {
+            $('.dp-model-alert').hide()
+        })
+    })
+</script>
 
 </body>
 </html>
