@@ -1,25 +1,41 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
 
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+{% extends 'base.html' %}
+
+{% block title %}所有工单{% endblock %}
+
+
+{% block linkscript %}
     <style>
         #aaa {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
         }
-
     </style>
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-<h1>所有合同</h1>
+{% endblock %}
 
+
+{% block navigationbar %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/business">商务管理</a>
+                    </li>
+                     <li class="active">
+                        所有合同
+                    </li>
+                </ul>
+            </div>
+        </div><!-- 导航栏 -->
 <table class="table table-hover" style="table-layout: fixed;">
     <thead>
     <tr>
@@ -75,7 +91,7 @@
 
     </tbody>
 </table>
-<a href="/business/" class="btn btn-info">新建流程</a>
+
 <div class="row clearfix">
     <div class="col-md-12 column text-center">
         <ul class="pagination">
@@ -88,5 +104,7 @@
     </div>
 </div>
 
-</body>
-</html>
+
+
+{% endblock %}
+

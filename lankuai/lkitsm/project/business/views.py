@@ -74,10 +74,11 @@ def addbusinessok(request):
 
 #所有合同
 def allcontract(request ,pageid):
+    username = request.session['username']
     allconList = Business.objects.all()
     paginator = Paginator(allconList, 2)
     page = paginator.page(pageid)
-    return render(request ,"business/allcontract.html" ,{"title":"所有合同" ,"myconList":page})
+    return render(request ,"business/allcontract.html" ,{"title":"所有合同" ,"myconList":"","username":username})
 
 
 #我的合同
@@ -100,6 +101,8 @@ def contractdetails(request ,pid):
     filess = files.objects.filter(pactNo=newpath)
     print(len(filess) ,filess ,"----------------------")
     return render(request ,"business/contractdetails.html" ,{"business":bus ,"filess":filess})
+
+
 
 
 

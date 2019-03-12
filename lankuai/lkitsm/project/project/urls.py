@@ -45,6 +45,9 @@ urlpatterns = [
     path(r'repairANDbuyer/', include('repairANDbuyer.urls')),
 
     #path('', include('workflow-master.urls')),
+
+#(r'^site_media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_PATH}),
 ]
+
 
 
