@@ -26,12 +26,7 @@
 
     <div class="row clearfix">
         <div class="col-lg-12">
-
-
             <ul class="breadcrumb">
-                <li>
-                    <a href="/index">首页</a>
-                </li>
                 <li>
                     <a href="/writeWorkList">运维系统</a>
                 </li>
@@ -39,17 +34,15 @@
                     所有工单
                 </li>
             </ul>
-            <ul class="breadcrumb">
-                <li>
                     <form method="post" action="/allWorkOrder/1" class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input class="form-control" type="search" name="search" value="跟进"/>
+                            <input class="form-control" type="search" name="search" placeholder="请输入工单号"/>
+
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
-                </li>
-            </ul>
-            <table class="table table-hover" style="table-layout: fixed;">
+
+            <table class="table table-hover  panel panel-default" style="table-layout: fixed;">
                 <thead>
                 <tr>
                     <th>开单时间</th>
