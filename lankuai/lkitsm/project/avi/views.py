@@ -103,6 +103,7 @@ def avi(request ,id):
     video = Video.objects.get(id = id)
 
     return render(request ,'avi/avi.html' ,{"video":video})
+
 import time
 from .models import Isee
 def addIsee(request ,pid):
@@ -126,6 +127,8 @@ def addIsee(request ,pid):
         return HttpResponseRedirect('http://127.0.0.1:8000/media/avi' + newpath)
 
 
+def addok(request):
+    return redirect('/addok')
 
 
 

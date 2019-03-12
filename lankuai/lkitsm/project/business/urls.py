@@ -23,6 +23,9 @@ urlpatterns = [
     #合同详情
     url('^([a-zA-Z0-9]*)$' ,views.contractdetails),
 
+    # addbusinessok
+    url('^addbusinessok/$' ,views.addbusinessok),
+
     url(r'^media/(?P<path>.*)/$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

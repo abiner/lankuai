@@ -1,0 +1,56 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}添加成功{% endblock %}
+
+
+{% block linkscript %}
+
+    <script type="text/javascript">
+
+        onload = function () {
+            setInterval(go, 1000);
+        };
+        var x = 3; //利用了全局变量来执行
+        function go() {
+            x--;
+            if (x > 0) {
+                document.getElementById("sp").innerHTML = x; //每次设置的x的值都不一样了。
+            } else {
+                location.href = '{{ redirect }}';
+            }
+        }
+    </script>
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h1>
+                    3 秒后自动跳转
+                </h1>
+                <div class="row clearfix">
+                    <div class="col-md-6 column">
+                    </div>
+                    <div class="col-md-6 column">
+                        <button type="button" class="btn btn-default"><a href="{{ redirect }}">继续</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

@@ -42,15 +42,11 @@ urlpatterns = [
     #继续处理
     url(r'^allWorkOrder/[a-z0-9]{11,14}', views.goon),
 
+    # 主页，更多 more
+    url(r'^addWriteWorkListOk/$', views.addWriteWorkListOk),
+
     #url(r'^allW/(\d+)$', views.allpage),
 
-    url(r'^main.html', views.main),
-    url(r'^nav.htm', views.nav),
-    #url(r'^form', views.form),
-    #url(r'^index$', views.index),
-    url(r'^table', views.table),
-    # url(r'^/test', views.test3),
-    url('hrms$', views.hrms),
     #url('hrworkfolw$', views.hrwfolw),
     url('test', views.test),
     #url('form', views.form),
