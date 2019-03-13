@@ -46,17 +46,23 @@ urlpatterns = [
                   # 部门经理同意 addmanageryes
                   url(r'^addmanageryes$', views.addmanageryes),
 
-                  #发起人确认收货
+                  # 发起人确认收货
                   url(r'^addconsignee$', views.addconsignee),
 
-
-                  #发起人查看进程
+                  # 发起人查看进程
                   url(r'^mypurchase/(\d+)$', views.mypurchase),
 
-                  #发起人查看具体某条进程 mypurchase
+                  # 发起人查看具体某条进程 mypurchase
                   url(r'^mypurchase/(\d{9})/$', views.onepurchase),
 
+                  # 主页，更多 more
+                  url(r'^addrepairok/$', views.addrepairok),
 
+                  # addCostPriceok
+                  url(r'^addCostPriceok/$', views.addCostPriceok),
+
+                  # repairANDbuyer/addpurchaseok/
+                  url(r'^repairANDbuyer/addpurchaseok/$', views.addpurchaseok),
 
                   url(r'^media/(?P<path>.*)/$', serve, {'document_root': settings.MEDIA_ROOT}),
 

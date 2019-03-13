@@ -14,6 +14,7 @@
         var addHtml = '<input type="file" name="addfile" id="file" style="z-index: 1"/>';
         $("#file_warp").append(addHtml);
     }
+
 </script>
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -62,31 +63,29 @@
 {% endblock %}
 
 
-{% block navigationbar %}
-    <div class="row clearfix">
-        <div class="col-lg-12 column">
-            <ul class="breadcrumb">
-                <li>
-                    <a href="/index">Home</a>
-                </li>
-                <li class="active">
-                    商务管理
-                </li>
-            </ul>
-        </div>
-    </div>
 
-
-{% endblock %}
 
 
 
 {% block content %}
-    <div class="container-fluid">
+       <div class="row clearfix">
+            <div class="col-md-12 column">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/writeWorkList">商务管理</a>
+                    </li>
+                     <li class="active">
+                        新增合同
+                    </li>
+                </ul>
+            </div>
+        </div><!-- 导航栏 -->
+
+    <div class="container">
         <div class="row clearfix">
-            <div class="col-sm-10 column">
+            <div class="col-md-12 column ">
                 <div class="row clearfix">
-                    <div class="col-md-8 column">
+                    <div class="col-md-9 column panel panel-default">
                         <form class="needs-validation" novalidate="" action="addbusiness" method="post"
                               enctype="multipart/form-data">
                             <div class="row">
@@ -226,7 +225,8 @@
                                     <label for="firstName">项目跟进人</label>
                                     <input type="text" name="followuppeople" class="form-control" id="firstName"
                                            placeholder=""
-                                           value={{ username }} required="">
+                                           value={{username}}
+                                           required="">
 
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -254,14 +254,14 @@
                                 <div class="col-md-12 mb-3">
                                     <div class="row">
                                         <span id="file_warp">
-                                            <input type="button" id="add" name="add" value="添加文件" onclick="addd()"/>
+                                            <input type="button" id="add" name="add" value="添加文件" onclick="addd()" style="margin:10px 0 0 0;"/>
                                         </span>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
-                                        <button class="btn btn-primary btn-lg btn-block" type="submit">保存</button>
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin:20px 0 20px 0;">保存</button>
                                     </div>
                                 </div>
 
@@ -269,11 +269,11 @@
                     </div>
 
 
-                    <div class="col-md-4 column">
+                    <div class="col-md-3 column">
                         <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <a href="/business"><h6 class="my-0">新增合同</h6></a>
+                                    <a href="/business"><h5 class="my-0">新增合同</h5></a>
                                     <small class="text-muted">Add contract</small>
                                 </div>
                                 <span class="text-muted"></span>
@@ -281,7 +281,7 @@
 
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <a href="mycontract/1"><h6 class="my-0">我的合同</h6></a>
+                                    <a href="mycontract/1"><h5 class="my-0">我的合同</h5></a>
                                     <small class="text-muted">My contract</small>
                                 </div>
                                 <span class="text-muted"></span>
@@ -289,7 +289,7 @@
 
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <a href="alcontract/1"><h6 class="my-0">合同总表</h6></a>
+                                    <a href="alcontract/1"><h5 class="my-0">合同总表</h5></a>
                                     <small class="text-muted">General contract</small>
                                 </div>
                                 <span class="text-muted"></span>
@@ -297,40 +297,25 @@
 
 
                         </ul>
+
+                    <ul class="list-group mb-3">
+                 <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <h6 class="my-0"><a href="#">新建工单注意事项</a></h6>
+                            <small class="text-muted">事件级别分等级，分别对应的是：1.高级；2.普通；3.一般；</small>
+                        <span class="text-muted"></span>
+                    </li>
+                    </ul>
+
+
                     </div><!-- 右侧菜单 -->
 
 
+
                 </div>
+
             </div>
         </div>
     </div>
-<!--
-    <div class="container">
-        <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="../static/hrms/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h2>蓝色快线商务管理</h2>
-            <p class="lead">-----LK-Business contract------</p>
-        </div>
 
-        <div class="row">
-            <div class="col-md-4 order-md-2 mb-4">
-
-
-            </div>
-
-
-            <div class="col-md-8 order-md-1">
-                <h4 class="mb-3">商务合同</h4>
-
-            </div>
-        </div>
-
-        <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">蓝色快线信息技术服务有限公司</p>
-
-
-        </footer>
-    </div>
--->
 {% endblock %}
 

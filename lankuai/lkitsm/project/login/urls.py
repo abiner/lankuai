@@ -3,8 +3,9 @@ from django.contrib import admin
 from login import views
 
 urlpatterns = [
-    url(r'^index$', views.index),
     url(r'^login/$', views.login),
+
+    url(r'^index$', views.index),
     # 注销
     url(r'^logout$', views.logout),
 
@@ -33,6 +34,8 @@ urlpatterns = [
     # 主页，更多 more
     url(r'^more$', views.more),
 
+    # 主页，更多 more
+    url(r'^adduserok/$', views.adduserok),
 
 ]
 

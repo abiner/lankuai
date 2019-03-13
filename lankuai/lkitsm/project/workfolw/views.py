@@ -81,7 +81,12 @@ def addworkfolw(request):
         print(wname ,wdepname ,wapplytype ,wbegin ,wfinish ,wreasons ,hierarchy0)
 
         addwf.save()
-        return redirect('/hrworkfolw/')
+        return redirect('/addworkfolwok/')
+
+
+def addworkfolwok(request):
+    redirect = "/hrworkfolw/"
+    return render(request, 'addok.html', {"redirect": redirect})
 
 #我的流程
 def myfolw(request ,pageid):
@@ -279,6 +284,9 @@ def alnotice(request ,pageid):
     page = paginator.page(pageid)
     return render(request, "workfolw/alnotice.html" ,{"noticeList":page ,"username":username})
 
+
+def addok(request):
+    return redirect('/addok')
 
 
 

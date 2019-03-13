@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import sys
+import os.path
 '''分离开发和生产环境的设置
 import socket
 if socket.get_hostname() == 'joe-mac-mini':
@@ -163,13 +164,24 @@ LOGIN_URL = '/'
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 # 加载静态文件
+
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(os.path.dirname(__file__),'static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'media'),
+    ('css',os.path.join(STATIC_ROOT,'css').replace('\\','/') ),
+    ('js',os.path.join(STATIC_ROOT,'js').replace('\\','/') ),
+    ('images',os.path.join(STATIC_ROOT,'images').replace('\\','/') ),
+    ('upload',os.path.join(STATIC_ROOT,'upload').replace('\\','/') ),
 ]
+
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), '../templates').replace('\\', '/'),
+
+)
 
 # 媒体文件
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
