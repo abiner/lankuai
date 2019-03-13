@@ -40,6 +40,9 @@ urlpatterns = [
                   # 公告 我发布的公告
                   re_path(r'^alnotice/(\d+)$', views.alnotice),
 
+                  # 主页，更多 more
+                  re_path(r'^addworkfolwok/$', views.addworkfolwok),
+
                   re_path(r'^media/(?P<path>.*)/$', serve, {'document_root': settings.MEDIA_ROOT}),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -42,6 +42,8 @@ def login(request):
                 #return render(request ,"login/index.html")
     return render(request, 'login/login.html')
 
+
+
 import datetime
 from repairANDbuyer.models import State
 #根据用户信息，显示相关信息
@@ -160,8 +162,6 @@ def register(request):
     depList = Departments.objects.all()
     unitname = UnitName.objects.all()
     jobList = Jobgrade.objects.all()
-
-
     return render(request, 'login/register.html', {'title': '注册' , "roleList":roleList , "depList":depList , "unitname":unitname ,"jobList":jobList})
 
 from django.conf import settings
@@ -236,13 +236,14 @@ def adduser(request):
                     for item in uupoto.chunks():
                         pic.write(item)
 
-            return redirect('/register/')
+            return redirect('/adduserok/')
 
-
+def adduserok(request):
+    redirect = "/adduserok"
+    return render(request, 'addok.html', {"redirect": redirect})
 
 
 def temporaryuser(request):
-
     return render(request ,"login/temporaryuser.html")
 
 def addtemporaryuser(request):
@@ -338,49 +339,5 @@ def logout(request):
 def more(request):
 
     return render(request ,"login/more.html")
-'''
-    username = request.session["username"]
-    user = User.objects.get(uname=username)
-    # 采购 ，申请人为自己，并到了收货，你需要确认收货时间
-    pafList = purchaseApplyFor.objects.filter(pname=username).filter(pcourse=3)
-    dep = Departments.objects.get(depname=user.udepname)
-    noticeList = Notice.objects.all().filter(audit=True).order_by("-issuetime")[:5]
-    role3noticeList = Notice.objects.all().filter(audit=False).order_by("-issuetime")[:5]
-    if user.role == 0 :
-        lookOverList = Workflow.objects.filter(wname=username).order_by("wbegin")[:5]
-
-
-        return render(request, "login/more.html", {"username": username ,"pafList":pafList ,"noticeList":noticeList ,"lookOverList":lookOverList })
-
-    elif user.role == 1 :
-        lookOverList = Workflow.objects.filter(wname=username)
-        e2List = failureMessages.objects.filter(eventlevel=1)
-        if username == "唐涛":
-            pafList = purchaseApplyFor.objects.filter(pcourse=1)
-
-            return render(request, "login/more.html",
-                          {"username": username, "pafList": pafList, "noticeList": noticeList,
-                           "lookOverList": lookOverList ,"e2List":e2List})
-
-
-    elif user.role == 2 :
-        lookOverList = Workflow.objects.filter(wname=username)
-        approvalPending = Workflow.objects.filter(hierarchy0=dep.id)  # 只显示事件层级为本部门ID
-        if username == "郑敏龙":
-            print("这是维修审批----------------------------------------")
-            e2List = failureMessages.objects.filter(eventlevel=2)
-
-            print("这是采购审批----------------------------------------")
-            pafList = purchaseApplyFor.objects.filter(pcourse=2)
-            return render(request, "login/more.html",
-                          {"username": username, "pafList": pafList, "noticeList": noticeList,
-                           "lookOverList": lookOverList ,"e2List":e2List ,"approvalPending":approvalPending})
-
-    elif user.role == 3 :
-        lookOverList = Workflow.objects.filter(wname=username)
-        approvalPending = Workflow.objects.all().filter(hierarchy0=dep.id)
-        return render(request ,"login/more.html" ,{"username":username ,"role3noticeList":role3noticeList
-            ,"lookOverList":lookOverList ,"approvalPending":approvalPending})
-'''
 
 

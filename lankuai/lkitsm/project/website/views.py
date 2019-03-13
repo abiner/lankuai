@@ -311,11 +311,22 @@ def addWriteWorkList(request):
                         creator ,workStateList, flowHandler)
         workWM.save()
         messages.add_message(request, messages.SUCCESS, "提交成功")
-        return redirect('/writeWorkList')
+        print("这里是提交成功之后")
+        return HttpResponseRedirect('/addWriteWorkListOk/')
+
+
+
+def addWriteWorkListOk(request):
+    redirect = "/writeWorkList"
+
+    return render(request, 'addok.html' ,{"redirect":redirect})
 
 
 
 
+
+
+'''
 # 注销系统
 from django.contrib import auth
 
@@ -328,61 +339,23 @@ def logout(request):
     return redirect("/login")
 
 
-@login_required
-def nav(request):
-    return render(request, 'nav.html')
-    # return HttpResponse("Sunck is a good man")
+
+    print("两秒前")
+    time.sleep(5)
+    print("两秒后")
+
+
+'''
 
 
 
-def form(request):
-    return render(request, 'forms.html')
-
-
-@login_required
-def main(request):
-    return render_to_response(request, 'main.html')
-
-
-@login_required
-def index(request):
-    return render(request, 'index.html')
-
-
-@login_required
-def table(request):
-    return render(request, 'table.html')
-
-
-def hrwfolw(request):
-    # return HttpResponse("Sunck is a good man")
-    return render(request, 'workfolw/hrworkfolw.html')
-
-
-def hrms(request):
-    # return HttpResponse("Sunck is a good man")
-    return render(request, 'hrms.html')
-
-
-54
-
-
-def media(request):
-    # return HttpResponse("Sunck is a good man")
-    return render(request, 'media/../templates/media.html')
-
-
-def testyem(request):
-    # 业务逻辑代码
-    return HttpResponse("OK")
 
 
 
-def ithelpdesk(request):
-    # 业务逻辑代码
-    return render(request, 'helpdesk.html')
-    # return HttpResponse("Sunck is a good man")
-    # return redirect("https://blog.csdn.net/miaoqinian")
+
+
+
+
 
 
 def test(request):

@@ -29,9 +29,9 @@
             /*Your code, e.g. background: red */
         }
 
-        #setfont{
-        color:white;
-        font-size:1.1em
+        #setfont {
+            color: white;
+            font-size: 1.1em
         }
     </style>
 
@@ -176,9 +176,10 @@
         </div>
 
 
-
-</div>
     </div>
+
+
+
 
 
     <div class="row clearfix">
@@ -273,13 +274,11 @@
                                 </ul>
                             </li>
           </ul>
-        </li>
-      </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
-    </div>      <!-- 导航 -->
+            </div>
+    </div>
+</div>      <!-- 导航 -->
 
 
 
@@ -315,42 +314,6 @@
     </div>
 </div>
 
-
-<!--
-                    {% if messages %}
-                        <ul class="messages">
-                            {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
--->
-
-<div class='dp-model-alert'>
-    <div class='content-alert'>
-        <div class='content-top-alert'>
-            <span class='left-alert span-alert'>温馨提示</span>
-            <span class='right-close-alert span-alert'>✖</span>
-        </div>
-        <div class='content-bottom-alert'>
-            <div class='content-bottom-c-alert'>
-                <i class="i-alert"></i> <span class='text-content1-alert span-alert'>{{ message }}</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script>
-    $(function () {
-        $('#ok').click(function () {
-            $('.dp-model-alert').show().delay(3000).hide(1000);//1000 表示展示1秒后消失
-        });
-        $('.right-close-alert').click(function () {
-            $('.dp-model-alert').hide()
-        })
-    })
-</script>
 
 </body>
 </html>

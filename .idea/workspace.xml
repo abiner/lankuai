@@ -2,9 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de0700d7-2fe6-4521-9481-5b87f99e98e5" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/addok.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/avi/sb.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/howareyou.docx" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/.idea/workspace.xml" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/avi/urls.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/avi/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/avi/views.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/avi/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/business/urls.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/business/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/business/views.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/business/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/login/urls.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/login/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/login/views.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/login/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/repairANDbuyer/urls.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/repairANDbuyer/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/repairANDbuyer/views.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/repairANDbuyer/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/avi/uploading.html" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/avi/uploading.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/base.html" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/login/index.html" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/login/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/website/urls.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/website/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/website/views.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/website/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/workfolw/urls.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/workfolw/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lankuai/lkitsm/project/workfolw/views.py" afterPath="$PROJECT_DIR$/lankuai/lkitsm/project/workfolw/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +33,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="writeWorkList.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="writeWorkList.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4427">
-              <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="41" />
+            <state relative-caret-position="410">
+              <caret line="243" column="6" lean-forward="true" selection-start-line="243" selection-start-column="6" selection-end-line="243" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addok.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/addok.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -28,7 +58,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/website/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4522">
+            <state relative-caret-position="19">
               <caret line="251" column="17" lean-forward="false" selection-start-line="251" selection-start-column="17" selection-end-line="251" selection-end-column="17" />
               <folding />
             </state>
@@ -39,8 +69,12 @@
         <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/business/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="772">
-              <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-              <folding />
+              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+              <folding>
+                <marker date="1552445123812" expanded="true" signature="876:3040" ph="..." />
+                <marker date="1552445123812" expanded="true" signature="3081:3349" ph="..." />
+                <marker date="1552445123812" expanded="true" signature="3390:3685" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,14 +89,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-179">
-              <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+            <state relative-caret-position="38">
+              <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#nav#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#10214#10220#0" expanded="true" />
+                <element signature="e#10454#10460#0" expanded="true" />
+                <element signature="e#10542#10548#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,14 +157,14 @@
         <option value="$PROJECT_DIR$/lankuai/lkitsm/project/templates/business/business.html" />
         <option value="$PROJECT_DIR$/lankuai/lkitsm/project/website/views.py" />
         <option value="$PROJECT_DIR$/lankuai/lkitsm/project/business/views.py" />
-        <option value="$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html" />
         <option value="$PROJECT_DIR$/lankuai/lkitsm/project/templates/base.html" />
+        <option value="$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="313" />
-    <option name="y" value="1" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="415" />
+    <option name="y" value="51" />
     <option name="width" value="1399" />
     <option name="height" value="995" />
   </component>
@@ -256,7 +304,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="313" y="1" width="1399" height="995" extended-state="1" />
+    <frame x="415" y="51" width="1399" height="995" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19193427" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -291,23 +339,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/login/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1083">
-          <caret line="123" column="25" lean-forward="false" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="112" column="41" lean-forward="false" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -616,14 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/website/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4522">
-          <caret line="251" column="17" lean-forward="false" selection-start-line="251" selection-start-column="17" selection-end-line="251" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/business/allcontract.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1767">
@@ -632,28 +655,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html">
+    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/business/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4427">
-          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="41" />
+        <state relative-caret-position="772">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding>
+            <marker date="1552445123812" expanded="true" signature="876:3040" ph="..." />
+            <marker date="1552445123812" expanded="true" signature="3081:3349" ph="..." />
+            <marker date="1552445123812" expanded="true" signature="3390:3685" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/website/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="251" column="17" lean-forward="false" selection-start-line="251" selection-start-column="17" selection-end-line="251" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/business/views.py">
+    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/addok.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="772">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="12" column="31" lean-forward="true" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+        <state relative-caret-position="38">
+          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#nav#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#10214#10220#0" expanded="true" />
+            <element signature="e#10454#10460#0" expanded="true" />
+            <element signature="e#10542#10548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lankuai/lkitsm/project/templates/website/writeWorkList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="243" column="6" lean-forward="true" selection-start-line="243" selection-start-column="6" selection-end-line="243" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

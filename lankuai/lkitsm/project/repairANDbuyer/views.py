@@ -41,7 +41,12 @@ def addrepair(request):
         print(faultID,fname,inunits,phone,faultclass,brandtype,equipmentID,faultdescribe,subtime,eventlevel)
         fm = failureMessages.createfailureMessages(faultID,fname,inunits,phone,faultclass,brandtype,equipmentID,faultdescribe,subtime,eventlevel)
         fm.save()
-        return redirect('/repairANDbuyer/repair')
+        return redirect('/repairANDbuyer/addrepairok/')
+
+
+def addrepairok(request):
+    redirect = "/repairANDbuyer/repair"
+    return render(request, 'addok.html', {"redirect": redirect})
 
 #维修
 #检测人员  提交表
@@ -110,7 +115,11 @@ def addCostPrice(request):
         elif "bohui" in request.POST:
             fm.eventlevel = 0
         fm.save()
-        return redirect('/index')
+        return redirect('/addCostPriceok/')
+
+def addCostPriceok(request):
+    redirect = "/index"
+    return render(request, 'addok.html', {"redirect": redirect})
 
 from django.core.paginator import Paginator
 #添加部门经理报价   addcostPrice
@@ -236,7 +245,11 @@ def addpurchase(request):
         # goods.save()
         paf = purchaseApplyFor.createpurchaseApplyFor(purchaseID ,pdemp ,pname ,pdate ,pcomment ,pcourse)
         paf.save()
-        return redirect('/repairANDbuyer/buyer')
+        return redirect('/repairANDbuyer/addpurchaseok/')
+
+def addpurchaseok(request):
+    redirect = "/repairANDbuyer/buyer"
+    return render(request, 'addok.html', {"redirect": redirect})
 
 
 #采购 ，采购部唐涛提交成本价 ,role 为1，   部门经理通过并修改报价role 为2
@@ -362,6 +375,7 @@ def onepurchase(request ,pageid):
         cg = Consignee.objects.get(purchaseID=newpath)
         return render(request ,"repairANDbuyer/onepurchase.html" ,{"title":"具体进程" ,"paf":paf ,"goodsList":goodsList
             ,"gc":gc ,"mc":mc ,"cg":cg})
+
 
 
 

@@ -66,7 +66,11 @@ def addbusiness(request):
         f = files.createfiles(pactNo ,file)
         print(f)
         f.save()
-    return redirect('/business/')
+    return redirect('/addbusinessok/')
+
+def addbusinessok(request):
+    redirect = "/business/"
+    return render(request, 'addok.html', {"redirect": redirect})
 
 #所有合同
 def allcontract(request ,pageid):
