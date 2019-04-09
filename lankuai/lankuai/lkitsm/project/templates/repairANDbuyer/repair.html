@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}维修{% endblock %}
+
+{% block linkscript %}
+    <script>
+        $(document).ready(function () {
+            $("#AddMoreTextBox").click(function (e) {
+                $("#InputsWrapper1").append('<label></label><input type="text" name="name1"  value=""/><br/><br/>');
+                $("#InputsWrapper2").append('<label></label><input type="text" name="name2" value=""/><br/><br/>');
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block navigationbar %}
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/index">首页</a>
+                </li>
+                <li class="active">
+                    维修
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+            <div class="row clearfix">
+
+                <div class="col-md-8 column">
+                    <form class="needs-validation" novalidate="" action="addrepair" method="post"
+                          enctype="multipart/form-data">
+                        <div class="row clearfix">
+
+
+                            <div class="col-md-4 column">
+                                <label for="firstName">姓名</label>
+                                <input type="text" name="fname" class="form-control" id="firstName" placeholder=""
+                                       value={{ username }}
+                                               required="">
+                            </div>
+                            <div class="col-md-4 column">
+                                <label for="country">所属部门</label>
+                                <select name="inunits" class="form-control" id="country" required="">
+                                    {% for item in depList %}
+                                        <option>{{ item.depname }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4 column">
+                                <label for="country">联系号码</label>
+                                <input type="text" name="phone" class="form-control" id="firstName" placeholder=""
+                                       value=""
+                                       required="">
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-4 column">
+                                <label for="country">故障分类</label>
+                                <select name="faultclass" class="form-control" id="country" required="">
+                                    {% for item in ftList %}
+                                        <option>{{ item.wapplytype }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4 column">
+                                <label for="country">设备名称及型号</label>
+                                <input type="text" name="brandtype" class="form-control" id="firstName" placeholder=""
+                                       value=""
+                                       required="">
+                            </div>
+                            <div class="col-md-4 column">
+                                <label for="country">设备序列号</label>
+                                <input type="text" name="equipmentID" class="form-control" id="firstName" placeholder=""
+                                       value=""
+                                       required="">
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+                                <label class="control-label" for="Eventdescribe">故障描述</label>
+                                <textarea type="" class="form-control" id="faultdescribe"
+                                          name="faultdescribe"> </textarea>
+                                <small class="text-muted">请详细描述故障现象</small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 column">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-4 column">
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <a href="/repairANDbuyer/repair"><h6 class="my-0">新增维修单</h6></a>
+                                <small class="text-muted">Add repairApplyFor</small>
+                            </div>
+                            <span class="text-muted"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <a href="#"><h6 class="my-0">全部维修记录</h6></a>
+                                <small class="text-muted">(通常来说个人是不能查看别人的维修记录的，只能查看自己申请的维修记录表，所有这个再说)General
+                                    repairApplyFor
+                                </small>
+                            </div>
+                            <span class="text-muted"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <a href="myrepair/1"><h6 class="my-0">我的维修申请</h6></a>
+                                <small class="text-muted">My repairApplyFor</small>
+                            </div>
+                            <span class="text-muted"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+{% endblock %}
+
+
+
+
+
+

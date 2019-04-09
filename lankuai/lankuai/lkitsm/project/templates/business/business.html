@@ -1,0 +1,321 @@
+<!--商务合同-->
+
+
+{% extends 'base.html' %}
+
+{% block title %}商务合同{% endblock %}
+
+
+{% block linkscript %}
+
+<script>
+    <!-- 追加文件 -->
+    function addd() {
+        var addHtml = '<input type="file" name="addfile" id="file" style="z-index: 1"/>';
+        $("#file_warp").append(addHtml);
+    }
+
+</script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test1' //指定元素
+    });
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test2' //指定元素
+    });
+</script>
+
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#test3' //指定元素
+    });
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+       <div class="row clearfix">
+            <div class="col-md-12 column">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="/writeWorkList">商务管理</a>
+                    </li>
+                     <li class="active">
+                        新增合同
+                    </li>
+                </ul>
+            </div>
+        </div><!-- 导航栏 -->
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column ">
+                <div class="row clearfix">
+                    <div class="col-md-9 column panel panel-default">
+                        <form class="needs-validation" novalidate="" action="addbusiness" method="post"
+                              enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">合同编号</label>
+                                    <input type="text" name="pactNo" class="form-control" id="firstName" placeholder=""
+                                           value=""
+                                           required="">
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">项目名称</label>
+                                    <input type="text" name="projectname" class="form-control" id="lastName"
+                                           placeholder=""
+                                           value=""
+                                           required="">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="firstName">签约名称</label>
+                                    <input type="text" name="signedname" class="form-control" id="firstName"
+                                           placeholder=""
+                                           value=""
+                                           required="">
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="country">签约主体</label>
+                                    <select name="signedsubject" class="form-control" id="country" required="">
+                                        <option value="">请选择单位...</option>
+                                        <option>广州蓝色快线信息技术服务有限公司</option>
+                                        <option>广州蓝色快线信息技术服务有限公司深圳分公司</option>
+                                        <option>深圳蓝色快线信息技术服务有限公司</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="country">开票单位</label>
+                                    <select name="billingunit" class="form-control" id="country" required="">
+                                        <option value="">请选择单位...</option>
+                                        <option>广州蓝色快线信息技术服务有限公司</option>
+                                        <option>广州蓝色快线信息技术服务有限公司深圳分公司</option>
+                                        <option>深圳蓝色快线信息技术服务有限公司</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="zip">执行日期</label>
+                                    <input type="text" class="form-control" value="" id="test1" placeholder=""
+                                           required=""
+                                           name="executedate">
+
+                                </div>
+
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="zip">开始日期</label>
+                                    <input type="text" name="begindate" class="form-control" id="test2" placeholder=""
+                                           required="">
+
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="zip">结束日期</label>
+                                    <input type="text" name="overdate" class="form-control" id="test3" placeholder=""
+                                           required="">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">合同总额</label>
+                                    <input type="text" name="pacttotalsum" class="form-control" id="firstName"
+                                           placeholder=""
+                                           value="" required="">
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">月均费用</label>
+                                    <input type="text" name="monthlyfee" class="form-control" id="lastName"
+                                           placeholder=""
+                                           value=""
+                                           required="">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">约定付款时间</label>
+                                    <input type="text" name="Agreedpaymenttime" class="form-control" id="firstName"
+                                           placeholder=""
+                                           value="" required="">
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="country">结费方式</label>
+                                    <select name="knotrate" class="form-control" id="country" required="">
+                                        <option value="">请选择结费方式...</option>
+                                        <option>年度一次结算</option>
+                                        <option>年度比例结算</option>
+                                        <option>半年结算</option>
+                                        <option>季度计算</option>
+                                        <option>月结算</option>
+                                        <option>次结算</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">客户负责人</label>
+                                    <input type="text" name="accountmanager" class="form-control" id="firstName"
+                                           placeholder=""
+                                           value="" required="">
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">项目地址</label>
+                                    <input type="text" name="projectaddress" class="form-control" id="lastName"
+                                           placeholder=""
+                                           value="" required="">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="firstName">项目跟进人</label>
+                                    <input type="text" name="followuppeople" class="form-control" id="firstName"
+                                           placeholder=""
+                                           value={{username}}
+                                           required="">
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="country">服务类型</label>
+                                    <select class="form-control" name="servertype" id="country" required="">
+                                        <option value="">请选择服务类型...</option>
+                                        <option>广州蓝色快线信息技术服务有限公司</option>
+                                        <option>广州蓝色快线信息技术服务有限公司深圳分公司</option>
+                                        <option>深圳蓝色快线信息技术服务有限公司</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="country">服务方式</label>
+                                    <select class="form-control" name="servicemode" id="country" required="">
+                                        <option value="">请选择服务方式...</option>
+                                        <option>驻场</option>
+                                        <option>上门</option>
+                                        <option>远程</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <div class="row">
+                                        <span id="file_warp">
+                                            <input type="button" id="add" name="add" value="添加文件" onclick="addd()" style="margin:10px 0 0 0;"/>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin:20px 0 20px 0;">保存</button>
+                                    </div>
+                                </div>
+
+                        </form>
+                    </div>
+
+
+                    <div class="col-md-3 column">
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <a href="/business"><h5 class="my-0">新增合同</h5></a>
+                                    <small class="text-muted">Add contract</small>
+                                </div>
+                                <span class="text-muted"></span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <a href="mycontract/1"><h5 class="my-0">我的合同</h5></a>
+                                    <small class="text-muted">My contract</small>
+                                </div>
+                                <span class="text-muted"></span>
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <a href="alcontract/1"><h5 class="my-0">合同总表</h5></a>
+                                    <small class="text-muted">General contract</small>
+                                </div>
+                                <span class="text-muted"></span>
+                            </li>
+
+
+                        </ul>
+
+                    <ul class="list-group mb-3">
+                 <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <h6 class="my-0"><a href="#">新建工单注意事项</a></h6>
+                            <small class="text-muted">事件级别分等级，分别对应的是：1.高级；2.普通；3.一般；</small>
+                        <span class="text-muted"></span>
+                    </li>
+                    </ul>
+
+
+                    </div><!-- 右侧菜单 -->
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

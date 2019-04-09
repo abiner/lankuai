@@ -1,0 +1,123 @@
+
+
+<!-- 上传页面 -->
+
+
+{% extends 'base.html' %}
+
+{% block title %}我的代办{% endblock %}
+
+
+{% block linkscript %}
+    <style>
+        .zoomImage {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+            background-position: center center;
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+
+{% block navigationbar %}
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                    </button>
+                    <a class="navbar-brand" href="#">蓝色快线影视教学中心</a>
+                </div>
+                <form method="post" action="/media/1" class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input class="form-control" type="search" name="search"/>
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        <a href="#">{{ username }}</a>
+                    </li>
+                    <li>
+                        <a href="">观看数量:{{ count }}</a>
+                    </li>
+                    <li>
+                        <a href="">学分:{{ score }}</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+	<div class="row clearfix">
+		<div class="col-lg-12 column">
+			<ul class="breadcrumb">
+				<li>
+					 <a href="/index">首页</a>
+				</li>
+				<li class="active">
+					蓝快视频
+				</li>
+			</ul>
+		</div>
+	</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="row clearfix">
+    <div class="col-md-12 column" style="padding: 100px;">
+        <div class="row">
+            {% for item in vidList %}
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <a href="avi{{ item.id }}" >
+                                <div class="zoomImage" style="background-image:url('media/{{ item.imgpath }}')"></div>
+                                <!--<img class="zoomImage"  src="media/{{ item.imgpath }}">-->
+                            </a>
+                            您的浏览器不支持 HTML5 video 标签。
+                            <p>上传日期：{{ item.uploaddate }}</p>
+                            <p>标题：{{ item.describe }}</p>
+                            <p>分数：{{ item.score }}</p>
+                            <p>{{ item.haveseen }}</p><!--
+                            <p>"media/{{ item.imgpath }}"</p>-->
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- 页码 -->
+<div class="row clearfix">
+    <div class="col-md-12 column text-center">
+        <ul class="pagination">
+            {% for index in video.paginator.page_range %}
+                <li>
+                    <a href="/media/{{ index }}">{{ index }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

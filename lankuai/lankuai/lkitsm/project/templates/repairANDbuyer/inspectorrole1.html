@@ -1,0 +1,118 @@
+<!--部门经理 主页点进来-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #aaa {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        #btn {
+            float: right;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../static/js/jquery-3.3.1.min.js"></script>
+
+
+</head>
+<body>
+<h1>技术检测，及成本提交</h1>
+<!--faultID,fname,inunits,phone,faultclass,brandtype,equipmentID,faultdescribe,subtime,eventlevel-->
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>故障ID:{{ fm.faultID }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>故障申请人姓名:{{ fm.fname }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4 id="liushuihao">故障申请人所在单位:{{ fm.inunits }}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>故障分类:{{ fm.faultclass }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>设备名称型号:{{ workflow.wdepname }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4 id="liushuihao">设备ID:{{ fm.brandtype }}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>故障描述:{{ fm.faultdescribe }}</h4>
+    </div>
+    <div class="col-md-4 mb-2">
+        <h4>提交时间:{{ fm.subtime }}</h4>
+    </div>
+</div>
+
+-->
+<!-- 下面这个form ,给上门人报价用的 addCostPrice-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <hr class="mb-3">
+            <form class="needs-validation" novalidate="" action="addCostPrice" method="post">
+
+                <div class="row">
+                    <div class="mb-3">
+                        <label class="control-label" for="cause">故障原因描述:</label>
+                        <textarea type="" class="form-control" id="cause" name="cause"> </textarea>
+                        <small class="text-muted">请详细描述故障原因</small>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <label class="control-label" for="supplies">可能使用耗材量:</label>
+                        <textarea type="" class="form-control" id="supplies"
+                                  name="supplies"> </textarea>
+                        <small class="text-muted">请详细描述所需耗材及量，如果无法维修，请描述无法维修的原因</small>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="costprice">耗材成本总价</label>
+                        <input type="text" name="costprice" class="form-control" id="costprice" placeholder=""
+                               value={{ costprice }}>
+                        <small class="text-muted">无法维修请填写：0</small>
+                    </div>
+                    <br>
+                    <div class="col-md-4 mb-3" style="display: none">
+                        <label for="faultID">故障ID:</label>
+                        <input type="text" name="faultID" class="form-control" id="faultID" placeholder=""
+                               value={{ fm.faultID }} required="" readonly="readonly">
+                    </div>
+                    <br>
+                    <div class="col-md-4 mb-3" style="display: none">
+                        <label for="cname">姓名:</label>
+                        <input type="text" name="cname" class="form-control" id="cname" placeholder=""
+                               value={{ username }} required="" readonly="readonly">
+                    </div>
+                </div>
+                <hr>
+                <button type="submit" name="bohui" class="btn btn-primary btn-lg" value="bohui">无法维修</button>
+                <button type="submit" name="pizhun" class="btn btn-primary btn-lg" value="pizhun" id="btn">提交</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

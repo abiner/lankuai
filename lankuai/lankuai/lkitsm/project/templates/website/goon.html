@@ -1,0 +1,222 @@
+<!--二次提交工单-->
+
+
+{% extends 'base.html' %}
+
+{% block title %}我的工单{% endblock %}
+
+
+{% block linkscript %}
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/index">首页</a>
+                </li>
+                <li>
+                    <a href="/writeWorkList">运维系统</a>
+                </li>
+                <li>
+                    <a href="/delay/1">我的待办</a>
+                </li>
+                <li class="active">
+                    具体工单信息
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12">
+
+
+                <div class="row clearfix">
+                    <div class="col-md-4 column">
+                        <ul>
+                            <li>
+                                <h4>开单时间:{{ sel.billingTime }}</h4>
+                            </li>
+                            <li>
+                                <h4>客户姓名:{{ sel.clientName }}</h4>
+                            </li>
+                            <li>
+                                <h4>故障大类:{{ sel.faultClass }}</h4>
+                            </li>
+                            <li>
+                                <h4>事件分类:{{ sel.incidentCla }}</h4>
+                            </li>
+                            <li>
+                                <h4>创建人:{{ sel.creator }}</h4>
+                            </li>
+                            <li>
+                                <h4>事件主题:{{ sel.incidentTheme }}</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 column">
+                        <ul>
+                            <li>
+                                <h4>工单号:{{ sel.workOrderNo }}</h4>
+                            </li>
+                            <li>
+                                <h4>客户电话:{{ sel.clientPho }}</h4>
+                            </li>
+                            <li>
+                                <h4>故障小类:{{ sel.faultClasss }}</h4>
+                            </li>
+                            <li>
+                                <h4>事件级别:{{ sel.incidentRank }}</h4>
+                            </li>
+                            <li>
+                                <h4>工单状态:{{ sel.workState }}</h4>
+                            </li>
+                            <li>
+                                <h4>事件描述:{{ sel.incidentDescribe }}</h4>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 column">
+                        <ul>
+                            <li>
+                                <h4>单位名称:{{ sel.unitName }}</h4>
+                            </li>
+                            <li>
+                                <h4>客户位置:{{ sel.clientAddress }}</h4>
+                            </li>
+                            <li>
+                                <h4>故障明细:{{ sel.faultDetail }}</h4>
+                            </li>
+                            <li>
+                                <h4>事件状态:{{ sel.incidentState }}</h4>
+                            </li>
+                            <li>
+                                <h4>流转处理人:{{ sel.flowHandler }}</h4>
+                            </li>
+                            <li>
+                                <h4>处理过程:{{ sel.manageCourse }}</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- 小表砸 -->
+{% for item in thisON %}
+    <hr/>
+    <div class="container">
+        <div class="col-md-4 mb-2">
+            <h4>完成时间：{{ item.finalTime }}</h4>
+        </div>
+        <div class="col-md-4 mb-2">
+            <h4>工单状态：{{ item.wState }}</h4>
+        </div>
+        <div class="col-md-4 mb-2">
+            <h4>流转处理人：{{ item.fHandler }}</h4>
+        </div>
+        <div class="col-md-6 mb-2">
+            <h4 class="form-control">处理过程：{{ item.process }}</h4>
+        </div>
+    </div>
+        <hr/>
+{% endfor %}
+
+
+
+
+
+    <div class="container" style="display:{{ what }}">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h1>
+                        继续完成工单
+                        <small>Subtext for header</small>
+                    </h1>
+                </div>
+                <div class="row clearfix">
+                    <form class="needs-validation" action="/addProcess/" method="post">
+                        <div class="col-md-6 column">
+                            <div class="form-group">
+                                <label for="WorkOrderNumber">工单号</label>
+                                <input class="form-control input-lg" name="gongdanhao" type="text" placeholder=""
+                                       readonly="readonly"
+                                       value={{ sel.workOrderNo }}>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">工单状态</label>
+                                <select class="form-control" id="workoderstats" required="" name="workStateList">
+                                    <option>跟进</option>
+                                    <option>关闭</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 column">
+                            <div class="form-group">
+                                <label for="Createddatetime">完成时间</label>
+                                <input class="form-control input-lg" name="finalTime" type="text"
+                                       placeholder=".input-lg"
+                                       value={{ finalTime }} readonly="readonly">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">流转处理人</label>
+                                <select class="form-control" id="LastModBy" required="" name="flowHandler">
+                                    <option>{{ username }}</option>
+                                    {% for item in allUser %}
+                                        <option>{{ item.uname }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 column">
+                            <div class="form-group">
+                                <label for="name">处理过程</label>
+                                <textarea class="form-control" name="manageCourse" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
+                    </form>
+                    <div class="col-md-4 column">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

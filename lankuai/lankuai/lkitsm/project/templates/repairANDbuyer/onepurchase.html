@@ -1,0 +1,118 @@
+<!-- 我申请的具体的信息进程 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<h1>采购申请表：</h1>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>采购ID:{{ paf.purchaseID }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>申请人部门:{{ paf.pdemp }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4 id="liushuihao">申请人姓名:{{ paf.pname }}</h4>
+    </div>
+</div>
+<br>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>申请时间:{{ paf.pdate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>备注:{{ paf.pcomment }}</h4>
+    </div>
+
+</div>
+
+
+<div class="container">
+    {% for item in goodsList %}
+        <div class="col-md-4 mb-2">
+            <h4>商品名称:{{ item.gname }}</h4>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            <h4>商品数量:{{ item.gamount }}</h4>
+        </div>
+    {% endfor %}
+</div>
+
+<hr/>
+
+<!-- 商品成本表 -->
+<h1>商品成本表：</h1>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>商品成本单价:{{ gc.gcgprice }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>单个商品建议售价:{{ gc.suggestprice }}</h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>单个商品利润:{{ gc.goodsprofit }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>填写时间:{{ gc.gcdate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>备注:{{ gc.pcomment }}</h4>
+    </div>
+</div>
+<hr/>
+
+
+<h1>部门经理同意表：</h1>
+<div class="container">
+
+    <div class="col-md-4 mb-2">
+        <h4>确认单个商品售价:{{ mc.affirmprice }}</h4>
+    </div>
+
+</div>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>部门经理姓名:{{ mc.quo }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>同意时间:{{ mc.mcdate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>备注:{{ mc.pcomment }}</h4>
+    </div>
+</div>
+
+<h1>发起人收货表</h1>
+<div class="container">
+    <div class="col-md-4 mb-2">
+        <h4>收货时间:{{ cg.cgdate }}</h4>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <h4>备注:{{ cg.pcomment }}</h4>
+    </div>
+</div>
+<hr/>
+
+<h3>当前进度：</h3>
+<h1>{{ paf.pcourse }}</h1>
+</body>
+</html>

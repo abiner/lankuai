@@ -1,0 +1,75 @@
+
+
+<!-- 查看我自己的维修申请 -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #aaa {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>我的采购申请</h1>
+
+<table class="table table-hover" style="table-layout: fixed;">
+    <thead>
+    <tr>
+        <th>采购ID</th>
+        <th>发起人部门</th>
+        <th>发起人姓名</th>
+        <th>申请时间</th>
+        <th>商品名称</th>
+        <th>商品数量</th>
+        <th>备注</th>
+        <th>状态</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    {% for sel in pafList %}
+        <tr onclick="window.document.location = '/repairANDbuyer/mypurchase/{{ sel.purchaseID }}/'">
+
+            <td>{{ sel.purchaseID }}</td>
+            <td>{{ sel.pdemp }}</td>
+            <td>{{ sel.pname }}</td>
+            <td>{{ sel.pdate }}</td>
+            <td>{{ item.gname }}</td>
+            <td>{{ item.gamount }}</td>
+            <td>{{ sel.pcomment }}</td>
+            <td id='aaa' title='{{ sel.pcourse }}'
+                style='width: 50px; text-align: left;'>{{ sel.pcourse }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+<a href="/repairANDbuyer/buyer" class="btn btn-info">新建流程</a>
+<div class="row clearfix">
+    <div class="col-md-12 column text-center">
+        <ul class="pagination">
+            {% for index in pafList.paginator.page_range %}
+                <li>
+                    <a href="/repairANDbuyer/mypurchase/{{ index }}">{{ index }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

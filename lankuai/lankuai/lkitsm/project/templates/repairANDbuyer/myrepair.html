@@ -1,0 +1,125 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}我的维修申请{% endblock %}
+
+
+{% block linkscript %}
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/index">首页</a>
+                </li>
+                <li>
+                    <a href="/repairANDbuyer/repair">维修</a>
+                </li>
+                <li class="active">
+                    采购
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+
+                    <table class="table table-hover" style="table-layout: fixed;">
+                        <thead>
+                        <tr>
+                            <th>故障ID</th>
+                            <th>发起人</th>
+                            <th>发起人单位</th>
+                            <th>发起人联系号码</th>
+                            <th>故障分类</th>
+                            <th>设备名称型号</th>
+                            <th>设备ID</th>
+                            <th>故障描述</th>
+                            <th>提交时间</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        {% for sel in myrepairList %}
+                            <tr onclick="window.document.location = '/repairANDbuyer/myrepair/{{ sel.faultID }}/'">
+
+                                <td>{{ sel.faultID }}</td>
+                                <td>{{ sel.fname }}</td>
+                                <td>{{ sel.inunits }}</td>
+                                <td>{{ sel.phone }}</td>
+                                <td>{{ sel.faultclass }}</td>
+                                <td>{{ sel.brandtype }}</td>
+                                <td>{{ sel.equipmentID }}</td>
+                                <td id='aaa' title='{{ sel.faultdescribe }}'
+                                    style='width: 50px; text-align: left;'>{{ sel.faultdescribe }}</td>
+                                <td>{{ sel.subtime }}</td>
+                                <td>{{ sel.eventlevel }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="row clearfix">
+        <div class="col-md-12 column text-center">
+            <ul class="pagination">
+                {% for index in myrepairList.paginator.page_range %}
+                    <li>
+                        <a href="/repairANDbuyer/myrepair/{{ index }}">{{ index }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        #aaa {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>我的维修申请</h1>
+
+<a href="/repairANDbuyer/repair" class="btn btn-info">新建流程</a>
+
+
+</body>
+</html>

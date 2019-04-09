@@ -1,0 +1,255 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}工单系统{% endblock %}
+
+
+{% block linkscript %}
+
+    <script src="/static/js/alert.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script>
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+    </script>
+    <script>
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test2' //指定元素
+        });
+    </script>
+
+
+    <script>
+        $('input[required]').before('<span style="color:red">*</span>');
+    </script>
+{% endblock %}
+
+{% block navigationbar %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/writeWorkList">运维系统</a>
+                </li>
+                <li class="active">
+                    新建工单
+                </li>
+            </ul>
+        </div>
+    </div><!-- 导航栏 -->
+
+    <div class="container">
+        <div class="row clearfix ">
+
+            <div class="col-md-9 column panel panel-default">
+                <form class="needs-validation" novalidate="" action="addWriteWorkList" method="post">
+                    <div class="row clearfix">
+                        <div class="col-md-4 column">
+                            <label for="Createddatetime">开单时间</label>
+                            <input type="text" name="billingTime" class="form-control" id="Createddatetime"
+                                   placeholder=""
+                                   value={{ nowTime }} required="" readonly="readonly">
+                            <label for="Contacts">客户姓名</label>
+                            <input type="text" class="form-control" id="Contacts" placeholder="" value=""
+                                   required name="clientName">
+                            <label for="Largefault">故障大类</label>
+                            <select class="form-control" id="Largefault"  name="faultClassList" required>
+                                <option>请选择</option>
+                            </select>
+                            <label for="EventName">事件分类</label>
+                            <select class="form-control" id="EventName" required
+                                    name="incidentClaList">
+                                <option>故障类</option>
+                                <option>服务类</option>
+                                <option>采购类</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 column">
+                            <label for="WorkOrderNumber">工单号</label>
+                            <input type="text" name="gongdanhao" class="form-control" id="WorkOrderNumber"
+                                   placeholder=""
+                                   value={{ workOrderNo }} readonly="readonly" required>
+                            <label for="Contactnumber">客户电话</label>
+                            <input type="text" class="form-control" id="Contactnumber" placeholder="" value=""
+                                   required name="clientPho">
+                            <label for="Smallfault">故障小类型</label>
+                            <select class="form-control" id="Smallfault"  name="faultClasssList" required>
+                                <option>请选择</option>
+                            </select>
+                            <label for="EventLevel">事件级别</label>
+                            <select class="form-control" id="EventLevel" required
+                                    name="incidentRankList">
+                                <option>3</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 column">
+                            <label>单位名称</label>
+                            <select class="form-control" id="WorkOrderNumber" required name="unitName"
+                                    onchange="this.parentNode.nextSibling.value=this.value">
+                                {% if unitName != null %}
+                                    <option>{{ unitName }}</option>
+                                {% endif %}
+                                {% for item in unitNList %}
+                                    <option>{{ item }}</option>
+                                {% endfor %}
+
+
+                            </select>
+                            <label for="Contactposition">客户位置</label>
+                            <input type="text" class="form-control" id="Contactposition" placeholder="" value=""
+                                   required name="clientAddress">
+                            <label for="Faultdetailed">故障明细</label>
+                            <select class="form-control" id="Faultdetailed" required name="faultDetailList">
+                                <option value="">请选择</option>
+                            </select>
+                            <label for="Eventstate">事件状态</label>
+                            <select class="form-control" id="Eventstate" required
+                                    name="incidentStateList">
+                                <option>关闭</option>
+                                <option>跟进</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                            <blockquote>
+                                <label for="Eventtheme">事件主题</label>
+                                <input type="text" class="form-control" id="Eventtheme" placeholder="请简约描述"
+                                       name="incidentTheme" required>
+                            </blockquote>
+                            <blockquote>
+                                <label class="control-label" for="Eventdescribe">事件描述</label>
+                                <textarea rows="3" class="form-control" id="Eventdescribe"
+                                          name="incidentDescribe" required> </textarea>
+                                <small class="text-muted">请详细描述故障现象</small>
+                            </blockquote>
+                            <blockquote>
+                                <label class="control-label" for="Eventhandling">处理过程</label>
+                                <textarea rows="3" class="form-control" id="Eventhandling"
+                                          name="manageCourse" required> </textarea>
+                                <small class="text-muted">请详细描述处理过程及结果</small>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-4 column">
+                            <label for="CreatedBy">创建人</label>
+                            <input type="text" class="form-control" id="CreatedBy" placeholder=""
+                                   name="creator"
+                                   value={{ username }} readonly="readonly">
+                        </div>
+                        <div class="col-md-4 column">
+                            <label for="workoderstats">工单状态</label>
+                            <select class="form-control" id="workoderstats"
+                                    name="workStateList">
+                                <option>关闭</option>
+                                <option>跟进</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 column">
+                            <label for="LastModBy">流转处理人</label>
+                            <select class="form-control" id="LastModBy" name="flowHandler">
+                                <option>{{ username }}</option>
+                                {% for item in allUser %}
+                                    <option>{{ item }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" id="ok" style="margin:20px 0 20px 0;">提交
+                    </button>
+
+                </form>
+            </div>
+
+
+            <div class="col-md-3 column">
+
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h5 class="my-0"><a href="writeWorkList">新建工单</a></h5>
+                            <small class="text-muted">New process</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h5 class="my-0"><a href="/Iestablish/1">我创办的</a></h5>
+                            <small class="text-muted">My process</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h5 class="my-0"><a href="/delay/1">我的待办</a></h5>
+                            <small class="text-muted">Backlog process</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h5 class="my-0"><a href="/allWorkOrder/1">所有工单(同单位内)</a></h5><!--#allWorkOrder-->
+                            <small class="text-muted">All work orders</small>
+                        </div>
+                        <span class="text-muted"></span>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="col-md-3 column">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0"><a href="writeWorkList">新建工单注意事项</a></h6>
+                        <small class="text-muted">事件级别分等级，分别对应的是：1.高级；2.普通；3.一般；</small>
+                    </div>
+                    <span class="text-muted"></span>
+                </li>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

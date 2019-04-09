@@ -1,0 +1,66 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}我的代办{% endblock %}
+
+
+{% block linkscript %}
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<ul class="breadcrumb">
+				<li>
+					 <a href="/index">首页</a>
+				</li>
+				<li>
+					 <a href="/media/1">蓝快视频</a>
+				</li>
+				<li class="active">
+					播放视频
+				</li>
+			</ul>
+		</div>
+	</div>
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <video id={{ video.id }} width="900" height="650" controls="controls">
+                            <source type="video/mp4" src="media/{{ video.uppath }}">
+                            您的浏览器不支持 HTML5 video 标签。
+                        </video>
+
+                        <p>上传日期：{{ video.uploaddate }}</p>
+                        <!--              <p>上传人：{{ video.uploader }}</p>-->
+                        <p>标题：{{ video.describe }}</p>
+                        <p>分数：{{ video.score }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+    <script>
+        var video = document.getElementById({{ video.id }});
+        video.addEventListener('ended', function () {
+            //window.location.href = 'http://127.0.0.1:8000/media/avi{{ video.id }}';
+            //setTimeout(window.open("/media/add{{ video.id }}"),3000)
+            window.location.href = "/media/add{{ video.id }}"
+        }, false);
+    </script>
+{% endblock %}
+
+
+

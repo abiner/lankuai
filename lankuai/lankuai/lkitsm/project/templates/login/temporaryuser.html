@@ -1,0 +1,155 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block title %}添加用户{% endblock %}
+
+
+{% block linkscript %}
+
+    <!--时间控件样式-->
+    <link rel="stylesheet" href="../../static/css/bootstrap-laydate.css">
+    <script src="../../static/js/bootstrap-laydate.js"></script>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+{% endblock %}
+
+
+{% block navigationbar %}
+
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="/login/">登录</a>
+                </li>
+                <li class="active">
+                    添加临时用户
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-8 column">
+                <div class="row clearfix">
+                    <form class="needs-validation" novalidate="" action="/addtemporaryuser" method="post"
+                          enctype="multipart/form-data">
+                        <div class="col-md-6 column">
+                            <label for="uname">姓名：</label>
+                            <input type="text" class="form-control" name="uname" id="uname" placeholder="" value=""
+                                   required="">
+                            <label for="uphone">联系号码：</label>
+                            <input type="text" class="form-control" name="uphone" id="uphone" placeholder=""
+                                   value=""
+                                   required="">
+                            <label for="EventName">性别</label>
+                            <select class="form-control" id="ugender" required="" name="ugender">
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
+                            <label for="ueducation">学历：</label>
+                            <input type="text" class="form-control" name="ueducation" id="ueducation" placeholder=""
+                                   value="" required="">
+                        </div>
+
+
+                        <div class="col-md-6 column">
+                            <label for="upasswd">设定密码：</label>
+                            <input type="password" class="form-control" name="upasswd" id="upasswd" placeholder=""
+                                   value=""
+                                   required="">
+                            <label for="uaddress">现居住：</label>
+                            <input type="text" class="form-control" name="uaddress" id="uaddress" placeholder=""
+                                   value=""
+                                   required="">
+                            <label for="manager">上级：</label>
+                            <select class="form-control" id="manager" required="" name="manager">
+                                <option>郑敏龙</option>
+                                <option>何遇光</option>
+                                <option>吴金松</option>
+                            </select>
+                            <label for="howyear">往届&应届：</label>
+                            <select class="form-control" id="howyear" required="" name="howyear">
+                                <option>应届</option>
+                                <option>应届</option>
+                            </select>
+
+
+                        </div>
+                        <div class="col-md-6 column">
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+    <script>
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+    </script>
+
+    <script>
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test2' //指定元素
+        });
+    </script>
+
+{% endblock %}
+
+

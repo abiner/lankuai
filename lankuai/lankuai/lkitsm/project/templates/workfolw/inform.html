@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://v4.bootcss.com/docs/4.0/examples/checkout/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/index/img/lk.ico">
+    <title>{{ title }}</title>
+    <link href="../static/hrms/bootstrap.min.css" rel="stylesheet"><!--一个点表示同同级目录，两个点表示上级目录-->
+
+    <!-- Custom styles for this template -->
+    <link href="../static/hrms/form-validation.css" rel="stylesheet">
+    <!--时间控件样式-->
+    <link rel="stylesheet" href="../static/css/bootstrap-laydate.css">
+    <script src="../static/js/bootstrap-laydate.js"></script>
+    <script src="../static/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/hrms/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../static/hrms/jquery-slim.min.js"><\/script>')</script>
+    <script src="../static/hrms/popper.min.js"></script>
+    <script src="../static/hrms/bootstrap.min.js"></script>
+    <script src="../static/hrms/holder.min.js"></script>
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h2>
+                {{ notice.headline }}
+            </h2>
+
+            <pre>{{ notice.article }}</pre>
+
+            <div class="zoomImage" style="background-image:url('media/{{ notice.picture }}')"></div>
+            <img class="zoomImage" alt="140x140" src="media/{{ notice.picture }}">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+
+</body>
+</html>
